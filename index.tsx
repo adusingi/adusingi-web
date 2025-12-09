@@ -1,7 +1,7 @@
 // Initialize Lucide Icons
-// @ts-ignore
+// @ts-expect-error
 if (window.lucide) {
-    // @ts-ignore
+    // @ts-expect-error
     window.lucide.createIcons();
   }
   
