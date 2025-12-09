@@ -1,7 +1,7 @@
 // Initialize Lucide Icons
-// @ts-expect-error
+// @ts-expect-error - lucide is loaded via CDN script, not available in TypeScript types
 if (window.lucide) {
-    // @ts-expect-error
+    // @ts-expect-error - createIcons is part of the Lucide CDN library
     window.lucide.createIcons();
   }
   
