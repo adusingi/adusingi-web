@@ -25,7 +25,7 @@
           class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Interests</a>
         <a href="/#experience"
           class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Experience</a>
-        <a href="/contact" class="font-serif text-base font-medium text-navy transition-colors">Contact</a>
+        <a href="/contact.html" class="font-serif text-base font-medium text-navy transition-colors">Contact</a>
       </div>
 
       <!-- Mobile Toggle -->
@@ -43,7 +43,7 @@
         class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Interests</a>
       <a href="/#experience"
         class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Experience</a>
-      <a href="/contact" class="mobile-link font-serif text-base font-medium text-navy block">Contact</a>
+      <a href="/contact.html" class="mobile-link font-serif text-base font-medium text-navy block">Contact</a>
     </div>
   </nav>
 
@@ -66,7 +66,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           <!-- Card 1: General Inquiry -->
-          <a href="#TALLY_FORM_GENERAL_INQUIRY"
+          <a href="#general-inquiry-form"
             class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
             <div class="w-12 h-12 text-slate-700 mb-6">
               <i data-lucide="message-square" class="w-10 h-10"></i>
@@ -81,7 +81,7 @@
           </a>
 
           <!-- Card 2: Travel Planner -->
-          <a href="#TALLY_FORM_TRAVEL_PLANNER"
+          <a href="#travel-planner-form"
             class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
             <div class="w-12 h-12 text-slate-700 mb-6">
               <i data-lucide="map" class="w-10 h-10"></i>
@@ -96,7 +96,7 @@
           </a>
 
           <!-- Card 3: Team-Building Retreats -->
-          <a href="#TALLY_FORM_TEAM_RETREATS"
+          <a href="#team-building-form"
             class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
             <div class="w-12 h-12 text-slate-700 mb-6">
               <i data-lucide="calendar" class="w-10 h-10"></i>
@@ -111,6 +111,60 @@
           </a>
 
         </div>
+
+        <!-- General Inquiry Form -->
+        <div id="general-inquiry-form" class="contact-form hidden mt-16 scroll-mt-32">
+          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">General Inquiry</h2>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+            <iframe
+              data-tally-src="https://tally.so/embed/LZ95ol?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="400"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="General Inquiry Form">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Travel Planner Form -->
+        <div id="travel-planner-form" class="contact-form hidden mt-16 scroll-mt-32">
+          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">Travel Planner</h2>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+            <iframe
+              data-tally-src="https://tally.so/embed/gDaW8d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="400"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Travel Planner Form">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Team-Building Retreats Form -->
+        <div id="team-building-form" class="contact-form hidden mt-16 scroll-mt-32">
+          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">Team-Building Retreats</h2>
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
+            <iframe
+              data-tally-src="https://tally.so/embed/Bza8rA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="400"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Team-Building Retreats Form">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Tally Embed Script -->
+        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}</script>
 
         <!-- Back to Home -->
         <div class="text-center mt-16">
@@ -144,7 +198,7 @@
           <i data-lucide="linkedin" class="w-6 h-6"></i>
           <span class="sr-only">LinkedIn</span>
         </a>
-        <a href="/contact" class="hover:text-white transition-colors">
+        <a href="/contact.html" class="hover:text-white transition-colors">
           <i data-lucide="mail" class="w-6 h-6"></i>
           <span class="sr-only">Contact</span>
         </a>
