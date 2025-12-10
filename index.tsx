@@ -1,7 +1,14 @@
 // Import Styles and Fonts
 import './style.css';
-import '@fontsource/inter';
-import '@fontsource/playfair-display';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource/inconsolata/400.css';
+import '@fontsource/inconsolata/500.css';
+import '@fontsource/inconsolata/600.css';
+import '@fontsource/inconsolata/700.css';
 
 // Import Lucide Icons
 import {
