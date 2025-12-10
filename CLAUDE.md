@@ -4,87 +4,63 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Portfolio website for Aimable Dusingizimana (Adusingi) - a Project Manager and Builder based in Okayama, Japan. The site showcases projects, experience, interests, and contact information.
+Portfolio website for Aimable Dusingizimana - a Project Manager and Builder based in Okayama, Japan.
 
 ## Tech Stack
 
-- **React 19** - UI framework (loaded via importmap CDN in production)
-- **TypeScript 5.2** - Type safety
-- **Vite 5.1** - Build tool and dev server
-- **Tailwind CSS** - Styling (loaded via CDN)
-- **Framer Motion 12** - Animation library
-- **Lucide React** - Icon library
-- **ESLint** - Code linting with React hooks and TypeScript support
+- **Vite 5** - Build tool and dev server
+- **TypeScript** - Type safety for interactivity code
+- **Tailwind CSS 4** - Styling via PostCSS
+- **Lucide** - Icon library (vanilla JS, not React)
 
 ## Development Commands
 
-This project uses **pnpm** as the package manager.
+Package manager: **pnpm**
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Start development server (hot reload enabled)
-pnpm dev
-
-# Build for production (TypeScript check + Vite build)
-pnpm build
-
-# Preview production build locally
-pnpm preview
-
-# Run ESLint for code quality checks
-pnpm lint
+pnpm install   # Install dependencies
+pnpm dev       # Start dev server
+pnpm build     # TypeScript check + Vite build
+pnpm preview   # Preview production build
+pnpm lint      # Run ESLint
 ```
 
 ## Architecture
 
-### Hybrid HTML/React Approach
+This is a **vanilla HTML/JavaScript** project, not a React app:
 
-The project uses an unusual hybrid architecture:
+- **[index.html](index.html)**: All site content and structure with Tailwind classes
+- **[index.tsx](index.tsx)**: JavaScript interactivity only:
+  - Lucide icon initialization
+  - Mobile menu toggle
+  - Navbar scroll effects (transparent → solid)
+  - Reveal-on-scroll animations via IntersectionObserver
+- **[style.css](style.css)**: Tailwind imports and custom theme (fonts, colors, reveal animations)
 
-1. **Primary content in [index.html](index.html)**: The entire site structure (navbar, hero, projects, interests, experience, footer) is written as static HTML with Tailwind classes. This is the production implementation.
+### Styling
 
-2. **[index.tsx](index.tsx)**: The entry point that adds JavaScript interactivity:
-   - Initializes Lucide icons
-   - Implements mobile menu toggle
-   - Adds navbar scroll effects (transparent → solid background)
-   - Handles reveal-on-scroll animations using IntersectionObserver
+Tailwind CSS 4 with PostCSS build. Theme in [style.css](style.css):
+- **Fonts**: Inconsolata (sans/mono), Cormorant Garamond (serif)
+- **Colors**: Custom navy, slate variants
+- **Animations**: `.reveal` class with delay modifiers
 
-**Note:** Previously, there were React components (`components/`), `App.tsx`, `constants.tsx`, and `types.ts` files that are now obsolete and should be removed. See [CLEANUP_REPORT.md](CLEANUP_REPORT.md) for details.
+### Adding Features
 
-### Key Implementation Details
-
-- **Styling**: TailwindCSS is loaded via CDN script tag in [index.html](index.html) with custom theme configuration (fonts: Inter + Playfair Display)
-- **Dependencies**: React, Framer Motion, and other packages are loaded via importmap in [index.html](index.html) pointing to aistudiocdn.com
-- **Animations**: Custom reveal animations using CSS classes (.reveal, .reveal-delay-*) triggered by IntersectionObserver
-- **Responsive**: Mobile-first design with responsive breakpoints (md, lg)
-
-## Configuration Files
-
-- **[vite.config.ts](vite.config.ts)**: Basic Vite config with React plugin and `server.host: true` for network access
-- **[tsconfig.json](tsconfig.json)**: TypeScript config with strict mode, React JSX, and ES2020 target
-- **[eslint.config.js](eslint.config.js)**: ESLint flat config with TypeScript, React hooks, and React refresh plugins
-- **[vercel.json](vercel.json)**: Vercel deployment configuration using pnpm
+1. Update [index.html](index.html) for structure/content
+2. Update [index.tsx](index.tsx) for interactivity
+3. Update [style.css](style.css) for custom styles
 
 ## Deployment
 
-The project is configured for Vercel deployment:
+Configured for **Vercel** (see [vercel.json](vercel.json)):
 
 ```bash
-# Deploy to Vercel (requires Vercel CLI)
-vercel
-
-# Deploy to production
-vercel --prod
+vercel          # Deploy preview
+vercel --prod   # Deploy production
 ```
 
-Build output goes to `dist/` directory. The build process runs TypeScript type checking before bundling.
+## Notes
 
-## Important Notes
-
-- No tests exist in this project
-- The site is designed to be deployed as static HTML with minimal JavaScript
-- If adding new features, follow the current pattern: update [index.html](index.html) for structure/content and [index.tsx](index.tsx) for interactivity
-- Run `pnpm lint` before committing to ensure code quality
-- See [CLEANUP_REPORT.md](CLEANUP_REPORT.md) for information about obsolete files that should be removed
+- No tests in this project
+- Run `pnpm lint` before committing
+- Some React dependencies exist in package.json for Vite plugin compatibility but React components are not used
