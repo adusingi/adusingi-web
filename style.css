@@ -48,3 +48,8 @@
 .reveal-delay-300 {
   transition-delay: 300ms;
 }
+
+/* Japanese text styling */
+.font-jp {
+  font-family: 'Noto Serif JP', serif;
+}
