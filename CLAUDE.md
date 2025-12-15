@@ -54,6 +54,8 @@ This is a **vanilla HTML/JavaScript** project, not a React app. It uses a **mult
   - Load post from JSON based on URL slug
   - Dynamic meta tags for SEO
   - Mobile menu toggle
+- **[src/components/newsletter-form.ts](src/components/newsletter-form.ts)**: Newsletter subscription form handler
+- **[api/subscribe.ts](api/subscribe.ts)**: Vercel serverless function for newsletter subscriptions (adds contacts via Resend API)
 - **[style.css](style.css)**: Tailwind imports and custom theme (fonts, colors, reveal animations)
 - **[vite.config.ts](vite.config.ts)**: Multi-page build configuration
 
