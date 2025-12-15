@@ -16,6 +16,9 @@ import { createIcons, Menu, Twitter, Linkedin, Mail } from 'lucide';
 // Import posts data
 import postsData from './src/data/posts.json' with { type: 'json' };
 
+// Import newsletter form
+import { initNewsletterForm } from './src/components/newsletter-form.js';
+
 // Initialize Icons
 createIcons({
   icons: {
@@ -150,4 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Show post content, hide loading
   loadingEl?.classList.add('hidden');
   postContentEl?.classList.remove('hidden');
+
+  // Initialize newsletter form
+  initNewsletterForm();
 });

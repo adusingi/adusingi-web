@@ -16,6 +16,9 @@ import { createIcons, Menu, Twitter, Linkedin, Mail } from 'lucide';
 // Import posts data
 import postsData from './src/data/posts.json' with { type: 'json' };
 
+// Import newsletter form
+import { initNewsletterForm } from './src/components/newsletter-form.js';
+
 // Initialize Icons
 createIcons({
   icons: {
@@ -184,6 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial render
   renderPosts(posts);
+
+  // Initialize newsletter form
+  initNewsletterForm();
 
   // Observe any existing reveal elements in the static HTML
   const revealElements = document.querySelectorAll('.reveal');

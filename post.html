@@ -155,6 +155,43 @@
         </div>
       </section>
     </article>
+
+    <!-- Newsletter Subscription -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
+        <div class="reveal max-w-xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-serif font-semibold text-slate-900 mb-4">
+            Enjoyed this post?
+          </h2>
+          <p class="text-lg text-slate-600 mb-8">
+            Subscribe to get notified when I publish new content about tech, Japan, and building digital products.
+          </p>
+
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              id="newsletter-email"
+              type="email"
+              placeholder="your@email.com"
+              required
+              class="flex-1 px-5 py-3 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent"
+            />
+            <button
+              id="newsletter-submit"
+              type="submit"
+              class="px-8 py-3 bg-slate-900 text-white font-medium rounded-full hover:bg-slate-800 transition-colors whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <div id="newsletter-message" class="hidden mt-3"></div>
+
+          <p class="text-xs text-slate-500 mt-4">
+            By subscribing, you agree to receive email updates. No spam, ever.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
