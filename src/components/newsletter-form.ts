@@ -42,6 +42,12 @@ export function initNewsletterForm() {
         body: JSON.stringify({ email }),
       });
 
+      // Handle 404 (local dev without Vercel)
+      if (response.status === 404) {
+        showMessage('API not available in local dev. Deploy to Vercel or use "vercel dev".', 'error');
+        return;
+      }
+
       const data = await response.json();
 
       if (response.ok) {
