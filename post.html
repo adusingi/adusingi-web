@@ -5,28 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">Blog Post | Aimable Dusingizimana</title>
-  <meta name="description" id="page-description" content="Read blog posts about tech, Japan, and building digital products.">
+  <meta name="description" id="page-description"
+    content="Read blog posts about tech, Japan, and building digital products.">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:url" id="og-url" content="https://www.adusingi.com/blog">
   <meta property="og:site_name" content="Aimable Dusingizimana">
   <meta property="og:title" id="og-title" content="Blog | Aimable Dusingizimana">
-  <meta property="og:description" id="og-description" content="Read blog posts about tech, Japan, and building digital products.">
+  <meta property="og:description" id="og-description"
+    content="Read blog posts about tech, Japan, and building digital products.">
   <meta property="og:image" content="https://www.adusingi.com/og-image.jpeg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@Adusingi">
   <meta name="twitter:title" id="twitter-title" content="Blog | Aimable Dusingizimana">
-  <meta name="twitter:description" id="twitter-description" content="Read blog posts about tech, Japan, and building digital products.">
+  <meta name="twitter:description" id="twitter-description"
+    content="Read blog posts about tech, Japan, and building digital products.">
   <meta name="twitter:image" content="https://www.adusingi.com/og-image.jpeg">
 
-  <!-- Google Fonts - Noto Serif JP for Japanese text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <!-- Google Fonts - Self-hosted via @fontsource -->
 </head>
 
 <body class="bg-stone-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
@@ -101,7 +100,7 @@
           <a href="/blog.html"
             class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blog
           </a>
@@ -127,7 +126,8 @@
       <!-- Post Body -->
       <section class="pb-24">
         <div class="max-w-3xl mx-auto px-4 md:px-8">
-          <div id="post-body" class="prose prose-lg prose-slate max-w-none
+          <div id="post-body"
+            class="prose prose-lg prose-slate max-w-none
             prose-headings:font-serif prose-headings:text-slate-900
             prose-p:text-slate-700 prose-p:leading-relaxed
             prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline
@@ -148,7 +148,7 @@
           <a href="/blog.html"
             class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
             Back to Blog
           </a>
@@ -165,18 +165,10 @@
         </p>
 
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            id="newsletter-email"
-            type="email"
-            placeholder="your@email.com"
-            required
-            class="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-          />
-          <button
-            id="newsletter-submit"
-            type="submit"
-            class="px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap shadow-lg shadow-black/10"
-          >
+          <input id="newsletter-email" type="email" placeholder="your@email.com" required
+            class="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
+          <button id="newsletter-submit" type="submit"
+            class="px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap shadow-lg shadow-black/10">
             Subscribe
           </button>
         </form>

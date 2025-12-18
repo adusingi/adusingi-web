@@ -14,6 +14,9 @@ importers:
       '@fontsource/inconsolata':
         specifier: ^5.2.5
         version: 5.2.8
+      '@fontsource/noto-serif-jp':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@upstash/redis':
         specifier: ^1.35.8
         version: 1.35.8
@@ -563,6 +566,9 @@ packages:
 
   '@fontsource/inconsolata@5.2.8':
     resolution: {integrity: sha512-lIZW+WOZYpUH91g9r6rYYhfTmptF3YPPM54ZOs8IYVeeL4SeiAu4tfj7mdr8llYEq31DLYgi6JtGIJa192gB0Q==}
+
+  '@fontsource/noto-serif-jp@5.2.7':
+    resolution: {integrity: sha512-uC8j75EoZe/s1LR+qzKCi7pXxQgY3Jbb0vpX9UOuzTOewMyPZd6zgQD64uxPo52qPPWkA+U1t4d/27KwKJoOCw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -2657,6 +2663,8 @@ snapshots:
   '@fontsource/cormorant-garamond@5.2.11': {}
 
   '@fontsource/inconsolata@5.2.8': {}
+
+  '@fontsource/noto-serif-jp@5.2.7': {}
 
   '@humanfs/core@0.19.1': {}
 

@@ -25,11 +25,7 @@
     content="Thoughts on tech, Japan, Tai-Chi, and building digital products from rural Okayama.">
   <meta name="twitter:image" content="https://www.adusingi.com/og-image.jpeg">
 
-  <!-- Google Fonts - Noto Serif JP for Japanese text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <!-- Google Fonts - Self-hosted via @fontsource -->
 </head>
 
 <body class="bg-stone-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
@@ -133,18 +129,10 @@
         </p>
 
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            id="newsletter-email"
-            type="email"
-            placeholder="your@email.com"
-            required
-            class="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-          />
-          <button
-            id="newsletter-submit"
-            type="submit"
-            class="px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap shadow-lg shadow-black/10"
-          >
+          <input id="newsletter-email" type="email" placeholder="your@email.com" required
+            class="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
+          <button id="newsletter-submit" type="submit"
+            class="px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap shadow-lg shadow-black/10">
             Subscribe
           </button>
         </form>
