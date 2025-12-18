@@ -41,29 +41,12 @@ createIcons({
   }
 });
 
+// Import Shared Logic
+import { setupMobileMenu } from './src/lib/ui';
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Menu Toggle ---
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-
-      // Update Icon (Simple toggle attribute or replace SVG if needed, but standard lucide replacement happens on load)
-      // For simplicity in Vanilla with Lucide CDN, we just let it be.
-      // Or we could re-run createIcons if we changed innerHTML.
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
-  }
+  setupMobileMenu();
 
   // --- Navbar Scroll Effect ---
   const navbar = document.getElementById('navbar');

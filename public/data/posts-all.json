@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "life-in-rural-japan",
+    "title": "Code, Craft & Culture: Building from Rural Japan",
+    "date": "2024-12-15T00:00:00.000Z",
+    "description": "What it's like developing software and building digital products from Okayama, Japan—away from the tech hubs.",
+    "tags": [
+      "japan",
+      "remote-work",
+      "lifestyle"
+    ]
+  },
+  {
+    "slug": "building-minimal-blog-vite",
+    "title": "Building a Minimal Blog with Vite and TypeScript",
+    "date": "2024-12-10T00:00:00.000Z",
+    "description": "How I built a zero-maintenance blog system using markdown, static generation, and vanilla JavaScript—no frameworks required.",
+    "tags": [
+      "vite",
+      "typescript",
+      "blogging",
+      "web-dev"
+    ]
+  },
+  {
+    "slug": "welcome-to-my-blog",
+    "title": "Welcome to My Blog",
+    "date": "2024-12-01T00:00:00.000Z",
+    "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
+    "tags": [
+      "meta",
+      "blogging",
+      "japan"
+    ]
+  },
+  {
+    "slug": "your-complete-guide-to-master-devops",
+    "title": "Your Complete Guide to Master DevOps",
+    "date": "2023-03-10T00:00:00.000Z",
+    "description": "A curated collection of YouTube tutorials covering DevOps fundamentals to advanced topics like Docker, Terraform, Kubernetes, and Ansible.",
+    "tags": [
+      "devops",
+      "tutorials",
+      "career",
+      "resources"
+    ]
+  },
+  {
+    "slug": "web3-fundamentals-from-zero-to-one",
+    "title": "Web 3.0 Fundamentals | From 0 to 1",
+    "date": "2023-02-13T00:00:00.000Z",
+    "description": "A comprehensive weekly newsletter series covering Web3 fundamentals including wallets, DeFi, NFTs, bridges, stablecoins, and more.",
+    "tags": [
+      "blockchain",
+      "web3",
+      "defi",
+      "ethereum",
+      "education"
+    ]
+  },
+  {
+    "slug": "step-by-step-guide-to-becoming-a-software-developer",
+    "title": "Step-by-Step Guide to Becoming a Software Developer: Learn to Code and Get Hired!",
+    "date": "2023-01-15T00:00:00.000Z",
+    "description": "A comprehensive guide with free resources to learn coding, build your portfolio, and land your first software development job.",
+    "tags": [
+      "career",
+      "coding",
+      "resources",
+      "education"
+    ]
+  },
+  {
+    "slug": "become-a-web3-developer-with-ethereum-blockchain",
+    "title": "Become a Web3 Developer with Ethereum Blockchain: A Guide to Learning and Getting Hired!",
+    "date": "2022-06-15T00:00:00.000Z",
+    "description": "A curated collection of resources to help you become a blockchain developer, focusing on Ethereum, Solidity, and Web3 job opportunities.",
+    "tags": [
+      "blockchain",
+      "ethereum",
+      "web3",
+      "career",
+      "resources"
+    ]
+  },
+  {
+    "slug": "privacy-anonymity-and-surveillance-on-the-blockchain",
+    "title": "Privacy, Anonymity and Surveillance on the Blockchain",
+    "date": "2017-10-15T00:00:00.000Z",
+    "description": "Exploring the challenges of privacy on public blockchains and the emerging solutions like Zero Knowledge Proofs and ring signatures.",
+    "tags": [
+      "blockchain",
+      "privacy",
+      "technology",
+      "cryptocurrency"
+    ]
+  }
+]

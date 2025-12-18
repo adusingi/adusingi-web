@@ -9,11 +9,13 @@
     "build:posts": "tsx scripts/build-posts.ts",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest",
     "newsletter:send": "tsx newsletter/send-post.ts"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.5",
     "@fontsource/inconsolata": "^5.2.5",
+    "@upstash/redis": "^1.35.8",
     "framer-motion": "^12.0.0",
     "gray-matter": "^4.0.3",
     "lucide": "^0.556.0",
@@ -21,7 +23,8 @@
     "marked": "^17.0.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "resend": "^6.6.0"
+    "resend": "^6.6.0",
+    "sanitize-html": "^2.17.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -30,6 +33,7 @@
     "@types/node": "^25.0.2",
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
+    "@types/sanitize-html": "^2.16.0",
     "@vercel/node": "^5.5.15",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.22",
@@ -42,6 +46,7 @@
     "tsx": "^4.21.0",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.19.1",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vitest": "^4.0.16"
   }
 }

@@ -1,11 +1,13 @@
 import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { checkRateLimit } from '../src/lib/rate-limit';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const allowedOrigin = process.env.ALLOWED_ORIGIN || '*';
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -17,6 +19,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Rate Limiting
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+  const rateLimit = await checkRateLimit(ip.toString());
+
+  res.setHeader('X-RateLimit-Limit', rateLimit.limit);
+  res.setHeader('X-RateLimit-Remaining', rateLimit.remaining);
+  res.setHeader('X-RateLimit-Reset', rateLimit.reset);
+
+  if (!rateLimit.success) {
+    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
   }
 
   const { email } = req.body;

@@ -10,11 +10,10 @@ import '@fontsource/inconsolata/500.css';
 import '@fontsource/inconsolata/600.css';
 import '@fontsource/inconsolata/700.css';
 
-// Import Lucide Icons
-import { createIcons, Menu, Twitter, Linkedin, Mail } from 'lucide';
-
-// Import posts data
-import postsData from './src/data/posts.json' with { type: 'json' };
+// Import Shared Logic
+import { setupMobileMenu } from './src/lib/ui';
+import { formatDate } from './src/lib/utils';
+import { createIcons, Menu, Twitter, Linkedin, Mail, Loader2, AlertCircle } from 'lucide';
 
 // Import newsletter form
 import { initNewsletterForm } from './src/components/newsletter-form.js';
@@ -35,32 +34,13 @@ interface Post {
   date: string;
   description: string;
   tags: string[];
-  content: string;
 }
 
-const posts: Post[] = postsData;
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // --- Mobile Menu Toggle ---
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  setupMobileMenu();
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
-  }
-
-  // --- Reveal on Scroll Animation (defined early so renderPosts can use it) ---
+  // --- Reveal on Scroll Animation ---
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -76,13 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Render Posts ---
   const postsContainer = document.getElementById('posts-container');
   const noPostsMessage = document.getElementById('no-posts');
+  let allPosts: Post[] = [];
+  let visibleCount = 6;
+  const LOAD_CHUNK = 6;
 
-  function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+  // Create Load More Button
+  const loadMoreBtn = document.createElement('button');
+  loadMoreBtn.className = 'hidden px-6 py-3 bg-white border border-slate-200 text-slate-700 font-medium rounded-full hover:bg-slate-50 transition-colors mx-auto mt-12 block';
+  loadMoreBtn.textContent = 'Load More Posts';
+
+  if (postsContainer) {
+    postsContainer.parentNode?.insertBefore(loadMoreBtn, postsContainer.nextSibling);
+    loadMoreBtn.addEventListener('click', () => {
+      visibleCount += LOAD_CHUNK;
+      // Re-apply filter with new count
+      const activeTagBtn = document.querySelector('.tag-btn.bg-slate-900');
+      const tag = activeTagBtn?.getAttribute('data-tag') || 'all';
+      filterByTag(tag);
     });
   }
 
@@ -97,7 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     noPostsMessage.classList.add('hidden');
 
-    postsContainer.innerHTML = filteredPosts.map(post => `
+    const visiblePosts = filteredPosts.slice(0, visibleCount);
+
+    // Show/Hide Load More
+    if (visibleCount < filteredPosts.length) {
+      loadMoreBtn.classList.remove('hidden');
+    } else {
+      loadMoreBtn.classList.add('hidden');
+    }
+
+    postsContainer.innerHTML = visiblePosts.map(post => `
       <article class="reveal bg-white border border-slate-100 rounded-2xl p-6 md:p-8 hover:border-slate-200 hover:shadow-lg transition-all duration-300">
         <a href="/post.html?slug=${post.slug}" class="block group">
           <div class="flex items-center gap-4 mb-3">
@@ -130,33 +129,52 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
 
     // Re-observe reveal elements
+    // Note: We need to re-query only the new elements or just observe all unobserved.
+    // Simpler: query all .reveal and observe (IntersectionObserver handles duplicates gracefully if same target is observed twice? 
+    // Actually, observe(target) adds it unless already observed? MDN says "If the target is already being observed ... no change occurs.")
     const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach(el => revealObserver.observe(el));
   }
 
-  // --- Extract All Tags ---
-  const allTags = new Set<string>();
-  posts.forEach(post => {
-    post.tags.forEach(tag => allTags.add(tag));
-  });
-
-  // --- Render Tag Filter ---
-  const tagFilter = document.getElementById('tag-filter');
-  if (tagFilter) {
-    const sortedTags = Array.from(allTags).sort();
-    sortedTags.forEach(tag => {
-      const button = document.createElement('button');
-      button.className = 'tag-btn px-4 py-2 text-sm font-medium rounded-full transition-colors bg-slate-50 text-slate-700 hover:bg-slate-100';
-      button.dataset.tag = tag;
-      button.textContent = tag;
-      tagFilter.appendChild(button);
+  // --- Tag Filtering ---
+  function setupTagFilter() {
+    const allTags = new Set<string>();
+    allPosts.forEach(post => {
+      post.tags.forEach(tag => allTags.add(tag));
     });
+
+    const tagFilter = document.getElementById('tag-filter');
+    if (tagFilter) {
+      tagFilter.innerHTML = ''; // Clear existing
+
+      // "All" button
+      const allBtn = document.createElement('button');
+      allBtn.className = 'tag-btn px-4 py-2 text-sm font-medium rounded-full transition-colors bg-slate-900 text-white';
+      allBtn.dataset.tag = 'all';
+      allBtn.textContent = 'All';
+      tagFilter.appendChild(allBtn);
+
+      const sortedTags = Array.from(allTags).sort();
+      sortedTags.forEach(tag => {
+        const button = document.createElement('button');
+        button.className = 'tag-btn px-4 py-2 text-sm font-medium rounded-full transition-colors bg-slate-50 text-slate-700 hover:bg-slate-100';
+        button.dataset.tag = tag;
+        button.textContent = tag;
+        tagFilter.appendChild(button);
+      });
+
+      // Add click handlers
+      const tagButtons = document.querySelectorAll('.tag-btn');
+      tagButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tag = btn.getAttribute('data-tag');
+          if (tag) filterByTag(tag);
+        });
+      });
+    }
   }
 
-  // --- Tag Filtering ---
   function filterByTag(tag: string) {
-
-    // Update active button styles
     const tagButtons = document.querySelectorAll('.tag-btn');
     tagButtons.forEach(btn => {
       if (btn.getAttribute('data-tag') === tag) {
@@ -168,30 +186,63 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Filter posts
+    // Reset pagination on filter change
+    visibleCount = LOAD_CHUNK;
+
     const filteredPosts = tag === 'all'
-      ? posts
-      : posts.filter(post => post.tags.includes(tag));
+      ? allPosts
+      : allPosts.filter(post => post.tags.includes(tag));
 
     renderPosts(filteredPosts);
   }
 
-  // Add click handlers to tag buttons
-  const tagButtons = document.querySelectorAll('.tag-btn');
-  tagButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tag = btn.getAttribute('data-tag');
-      if (tag) filterByTag(tag);
-    });
-  });
+  // --- Data Loading ---
+  async function loadData() {
+    if (!postsContainer) return;
 
-  // Initial render
-  renderPosts(posts);
+    // Show Loader
+    postsContainer.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-20 text-slate-400">
+        <i data-lucide="loader-2" class="w-8 h-8 animate-spin mb-4"></i>
+        <p>Loading posts...</p>
+      </div>
+    `;
+    createIcons({ icons: { Loader2 } }); // Refresh icons for loader
 
-  // Initialize newsletter form
+    try {
+      // Fetch lightweight summaries
+      const response = await fetch('/data/posts-all.json');
+
+      if (!response.ok) {
+        throw new Error(`Failed to load posts: ${response.statusText}`);
+      }
+
+      allPosts = await response.json();
+
+      setupTagFilter();
+      renderPosts(allPosts);
+
+      // Initialize icons for the newly rendered posts
+      createIcons({ icons: { Loader2, AlertCircle } });
+
+    } catch (error) {
+      console.error('Error loading posts:', error);
+      postsContainer.innerHTML = `
+        <div class="flex flex-col items-center justify-center py-20 text-red-500">
+          <i data-lucide="alert-circle" class="w-10 h-10 mb-4"></i>
+          <p class="text-lg font-medium">Unable to load blog posts.</p>
+          <p class="text-sm text-slate-500 mt-2">Please try refreshing the page.</p>
+        </div>
+      `;
+      createIcons({ icons: { AlertCircle } });
+    }
+  }
+
+  // Start
+  await loadData();
   initNewsletterForm();
 
-  // Observe any existing reveal elements in the static HTML
+  // Reveal elements logic for static parts
   const revealElements = document.querySelectorAll('.reveal');
   revealElements.forEach(el => revealObserver.observe(el));
 });
