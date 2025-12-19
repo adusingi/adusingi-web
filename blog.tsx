@@ -17,7 +17,7 @@ import '@fontsource/inconsolata/700.css';
 // Import Shared Logic
 import { setupMobileMenu } from './src/lib/ui';
 import { formatDate } from './src/lib/utils';
-import { createIcons, Menu, Twitter, Linkedin, Mail, Loader2, AlertCircle } from 'lucide';
+import { createIcons, Menu, Twitter, Linkedin, Mail, Loader2, AlertCircle, Pin } from 'lucide';
 
 // Import newsletter form
 import { initNewsletterForm } from './src/components/newsletter-form.js';
@@ -28,7 +28,8 @@ createIcons({
     Menu,
     Twitter,
     Linkedin,
-    Mail
+    Mail,
+    Pin
   }
 });
 
@@ -38,6 +39,7 @@ interface Post {
   date: string;
   description: string;
   tags: string[];
+  pinned?: boolean;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -101,7 +103,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     postsContainer.innerHTML = visiblePosts.map(post => `
-      <article class="reveal bg-white border border-slate-100 rounded-2xl p-6 md:p-8 hover:border-slate-200 hover:shadow-lg transition-all duration-300">
+      <article class="reveal bg-white border border-slate-100 rounded-2xl p-6 md:p-8 hover:border-slate-200 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+        ${post.pinned ? `
+          <div class="absolute top-0 right-0 p-3 bg-slate-50 border-b border-l border-slate-100 rounded-bl-2xl">
+            <i data-lucide="pin" class="w-4 h-4 text-blue-600 fill-blue-600/10"></i>
+          </div>
+        ` : ''}
         <a href="/post.html?slug=${post.slug}" class="block group">
           <div class="flex items-center gap-4 mb-3">
             <time class="text-sm font-mono text-slate-400">${formatDate(post.date)}</time>

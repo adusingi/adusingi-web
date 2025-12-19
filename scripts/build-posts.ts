@@ -14,6 +14,7 @@ interface PostFrontmatter {
   description: string;
   tags: string[];
   draft?: boolean;
+  pinned?: boolean;
 }
 
 interface Post {
@@ -22,6 +23,7 @@ interface Post {
   date: string;
   description: string;
   tags: string[];
+  pinned?: boolean;
   content: string; // Detail API includes content
 }
 
@@ -31,6 +33,7 @@ interface PostSummary {
   date: string;
   description: string;
   tags: string[];
+  pinned?: boolean;
   // Summary API excludes content to save bandwidth
 }
 
@@ -85,6 +88,7 @@ async function buildPosts() {
       date: frontmatter.date,
       description: frontmatter.description,
       tags: frontmatter.tags || [],
+      pinned: frontmatter.pinned || false,
       content: htmlContent,
     };
 
@@ -97,8 +101,15 @@ async function buildPosts() {
     );
   }
 
-  // Sort by date (newest first)
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Sort by pinned (true first) then date (newest first)
+  posts.sort((a, b) => {
+    // 1. Pinned posts first
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+
+    // 2. Then by date (newest first)
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   // Create Summaries (No content) for listing
   const summaries: PostSummary[] = posts.map(({ content, ...summary }) => summary);

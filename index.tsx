@@ -26,7 +26,9 @@ import {
   BookOpen,
   Twitter,
   Linkedin,
-  Mail
+  Mail,
+  PlayCircle,
+  X
 } from 'lucide';
 
 // Initialize Icons
@@ -41,16 +43,20 @@ createIcons({
     BookOpen,
     Twitter,
     Linkedin,
-    Mail
+    Mail,
+    PlayCircle,
+    X
   }
 });
 
 // Import Shared Logic
 import { setupMobileMenu } from './src/lib/ui';
+import { setupVideoModal } from './src/lib/ui';
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Menu Toggle ---
   setupMobileMenu();
+  setupVideoModal();
 
   // --- Navbar Scroll Effect ---
   const navbar = document.getElementById('navbar');

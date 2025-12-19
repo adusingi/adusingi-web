@@ -4,6 +4,7 @@ date: 2024-12-01
 description: "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama."
 tags: ["meta", "blogging", "japan"]
 draft: false
+pinned: true
 ---
 
 # Welcome to My Blog

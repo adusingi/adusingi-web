@@ -283,7 +283,11 @@
               Practitioner (4+ years) under Master Kiyoko Kashiwagi, with a diploma from Grandmaster William C.C. Chen
               lineage.
             </p>
-            <div class="mt-auto"></div>
+            <button id="open-taichi-video"
+              class="mt-auto mx-auto inline-flex w-44 justify-center items-center gap-2 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">
+              <i data-lucide="play-circle" class="w-4 h-4"></i>
+              <span>Watch Practice</span>
+            </button>
           </div>
 
           <!-- Interest 2 -->
@@ -298,7 +302,7 @@
               as Tai-Chi (<span class="font-jp">太極拳</span>) classes online or in-person.
             </p>
             <a href="/contact.html"
-              class="mt-auto inline-block mx-auto px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors text-center">Let's
+              class="mt-auto inline-block mx-auto w-44 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors text-center">Let's
               Talk</a>
           </div>
 
@@ -312,7 +316,9 @@
             <p class="text-sm text-slate-700 leading-relaxed mb-4 flex-grow">
               Writing about AI, blockchain, and code experiments. Building tools and documenting processes.
             </p>
-            <div class="mt-auto"></div>
+            <a href="/blog.html"
+              class="mt-auto inline-block mx-auto w-44 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors text-center">Read
+              Blog</a>
           </div>
 
           <!-- Interest 4 -->
@@ -516,6 +522,39 @@
       </div>
     </div>
   </footer>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+    aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop">
+    </div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+        <!-- Modal Panel -->
+        <div
+          class="relative transform overflow-hidden rounded-2xl bg-black text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl opacity-0 scale-95"
+          id="modal-panel">
+          <!-- Close Button -->
+          <button id="close-video-modal" type="button"
+            class="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md">
+            <span class="sr-only">Close</span>
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+
+          <!-- Video Container (16:9 aspect ratio) -->
+          <div class="relative aspect-video w-full bg-black">
+            <iframe id="youtube-player" class="absolute inset-0 w-full h-full" src="" title="Tai Chi Practice"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Load Main Script -->
   <script type="module" src="./index.tsx"></script>

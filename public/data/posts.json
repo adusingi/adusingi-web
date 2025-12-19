@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "welcome-to-my-blog",
+      "title": "Welcome to My Blog",
+      "date": "2024-12-01T00:00:00.000Z",
+      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
+      "tags": [
+        "meta",
+        "blogging",
+        "japan"
+      ],
+      "pinned": true
+    },
+    {
       "slug": "life-in-rural-japan",
       "title": "Code, Craft & Culture: Building from Rural Japan",
       "date": "2024-12-15T00:00:00.000Z",
@@ -9,7 +21,8 @@
         "japan",
         "remote-work",
         "lifestyle"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "building-minimal-blog-vite",
@@ -21,18 +34,8 @@
         "typescript",
         "blogging",
         "web-dev"
-      ]
-    },
-    {
-      "slug": "welcome-to-my-blog",
-      "title": "Welcome to My Blog",
-      "date": "2024-12-01T00:00:00.000Z",
-      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
-      "tags": [
-        "meta",
-        "blogging",
-        "japan"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "your-complete-guide-to-master-devops",
@@ -44,7 +47,8 @@
         "tutorials",
         "career",
         "resources"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "web3-fundamentals-from-zero-to-one",
@@ -57,7 +61,8 @@
         "defi",
         "ethereum",
         "education"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "step-by-step-guide-to-becoming-a-software-developer",
@@ -69,7 +74,8 @@
         "coding",
         "resources",
         "education"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "become-a-web3-developer-with-ethereum-blockchain",
@@ -82,7 +88,8 @@
         "web3",
         "career",
         "resources"
-      ]
+      ],
+      "pinned": false
     },
     {
       "slug": "privacy-anonymity-and-surveillance-on-the-blockchain",
@@ -94,7 +101,8 @@
         "privacy",
         "technology",
         "cryptocurrency"
-      ]
+      ],
+      "pinned": false
     }
   ],
   "pagination": {
