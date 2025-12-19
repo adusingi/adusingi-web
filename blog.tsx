@@ -179,7 +179,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       tagButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           const tag = btn.getAttribute('data-tag');
-          if (tag) filterByTag(tag);
+          if (tag) {
+            visibleCount = LOAD_CHUNK; // Reset pagination only when changing filters
+            filterByTag(tag);
+          }
         });
       });
     }
@@ -196,9 +199,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.classList.add('bg-slate-50', 'text-slate-700', 'hover:bg-slate-100');
       }
     });
-
-    // Reset pagination on filter change
-    visibleCount = LOAD_CHUNK;
 
     const filteredPosts = tag === 'all'
       ? allPosts
