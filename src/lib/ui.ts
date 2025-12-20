@@ -34,18 +34,47 @@ export function setupMobileMenu() {
 }
 
 export function setupVideoModal() {
+    // Determine context - we might be setting this up early
+    // We'll use event delegation for the click to be safe, or just direct attachment if elements exist.
+    // Given the ID is unique, direct attachment is fine, but we'll add a check inside the handler.
+
+    const openBtn = document.getElementById('open-taichi-video');
+
+    // We need these for the modal logic
     const modal = document.getElementById('video-modal');
     const backdrop = document.getElementById('modal-backdrop');
     const panel = document.getElementById('modal-panel');
-    const openBtn = document.getElementById('open-taichi-video');
     const closeBtn = document.getElementById('close-video-modal');
     const iframe = document.getElementById('youtube-player') as HTMLIFrameElement;
 
-    if (!modal || !backdrop || !panel || !openBtn || !closeBtn || !iframe) return;
-
+    // YouTube URL
     const videoUrl = "https://www.youtube.com/embed/v9P1e4yOWJg?autoplay=1&rel=0";
+    const externalUrl = "https://youtu.be/v9P1e4yOWJg"; // Better for opening in app
+
+    if (!openBtn) return;
+
+    openBtn.addEventListener('click', (e) => {
+        // Check viewport width - md breakpoint is usually 768px
+        const isMobile = window.innerWidth < 768;
+
+        if (isMobile) {
+            // Mobile behavior: Open in new tab/app
+            window.open(externalUrl, '_blank');
+        } else {
+            // Desktop behavior: Open Modal
+            e.preventDefault();
+
+            if (!modal || !backdrop || !panel || !closeBtn || !iframe) {
+                console.error("Modal elements missing");
+                return;
+            }
+            openModal();
+        }
+    });
 
     const openModal = () => {
+        if (!modal || !backdrop || !panel || !iframe) return;
+
         modal.classList.remove('hidden');
         // Small timeout to allow display:block to apply before opacity transition
         setTimeout(() => {
@@ -58,6 +87,8 @@ export function setupVideoModal() {
     };
 
     const closeModal = () => {
+        if (!modal || !backdrop || !panel || !iframe) return;
+
         backdrop.classList.add('opacity-0');
         panel.classList.remove('opacity-100', 'scale-100');
         panel.classList.add('opacity-0', 'scale-95');
@@ -69,28 +100,25 @@ export function setupVideoModal() {
         }, 300); // Match transition duration
     };
 
-    openBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal();
-    });
-
-    closeBtn.addEventListener('click', closeModal);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
 
     // Close on backdrop click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target === backdrop || (e.target as HTMLElement).closest('.flex')) {
-            // The structure is nested, we want to close if clicking outside the panel.
-            // The click might bubble up.
-            // Simplest check: if panel does NOT contain target
-            if (!panel.contains(e.target as Node)) {
-                closeModal();
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (!modal || !backdrop || !panel) return;
+            if (e.target === modal || e.target === backdrop || (e.target as HTMLElement).closest('.flex')) {
+                if (!panel.contains(e.target as Node)) {
+                    closeModal();
+                }
             }
-        }
-    });
+        });
+    }
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
             closeModal();
         }
     });

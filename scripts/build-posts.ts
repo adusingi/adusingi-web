@@ -112,7 +112,8 @@ async function buildPosts() {
   });
 
   // Create Summaries (No content) for listing
-  const summaries: PostSummary[] = posts.map(({ content, ...summary }) => summary);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const summaries: PostSummary[] = posts.map(({ content: _content, ...summary }) => summary);
 
   // Pagination Config
   const PAGE_SIZE = 10;
