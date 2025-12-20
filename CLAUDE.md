@@ -136,9 +136,9 @@ Output directory: `dist/`
 
 ## Important Notes
 
-- This is a **vanilla HTML/JS project** - NOT React. The `.tsx` files are TypeScript with JSX syntax for Lucide icons only
-- React and React-DOM are dependencies for the Vite React plugin, but no React components are used in the actual code
-- Icons are initialized using `createIcons()` from `lucide` package (not `lucide-react`)
+- This is a **vanilla HTML/JS project**. The `.tsx` files are TypeScript with JSX syntax for Lucide icons only
+- React and React-DOM have been removed
+- Icons are initialized using `createIcons()` from `lucide` package
 - All interactivity is vanilla TypeScript - use `document.querySelector`, `addEventListener`, etc.
 - Build order matters: posts must be built before TypeScript compilation
 - Posts are sorted by date (newest first) automatically in [scripts/build-posts.ts](scripts/build-posts.ts)
