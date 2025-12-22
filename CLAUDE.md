@@ -26,6 +26,7 @@ pnpm build            # Build posts + TypeScript check + Vite build
 pnpm build:posts      # Generate posts.json from markdown
 pnpm preview          # Preview production build
 pnpm lint             # Run ESLint
+pnpm test             # Run tests with vitest
 pnpm newsletter:send <post-slug>  # Send blog post as newsletter (requires RESEND_API_KEY)
 ```
 
@@ -142,4 +143,4 @@ Output directory: `dist/`
 - All interactivity is vanilla TypeScript - use `document.querySelector`, `addEventListener`, etc.
 - Build order matters: posts must be built before TypeScript compilation
 - Posts are sorted by date (newest first) automatically in [scripts/build-posts.ts](scripts/build-posts.ts)
-- No tests in this project - manual testing only
+- Tests use vitest - run `pnpm test` to execute. Test files are in [tests/](tests/)
