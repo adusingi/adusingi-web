@@ -4,7 +4,8 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: true
+    host: true,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 5173,
   },
   build: {
     rollupOptions: {

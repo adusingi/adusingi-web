@@ -1,13 +1,19 @@
 import { Redis } from '@upstash/redis';
 
 // Create Redis instance strictly from env vars
-// If vars are missing, redis will be null
-const redis = (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
-    ? new Redis({
-        url: process.env.UPSTASH_REDIS_REST_URL,
-        token: process.env.UPSTASH_REDIS_REST_TOKEN,
-    })
-    : null;
+// If vars are missing, or initialization fails, redis will be null
+let redis: Redis | null = null;
+try {
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+        redis = new Redis({
+            url: process.env.UPSTASH_REDIS_REST_URL,
+            token: process.env.UPSTASH_REDIS_REST_TOKEN,
+        });
+    }
+} catch (error) {
+    console.warn('Failed to initialize Redis:', error);
+    redis = null;
+}
 
 interface RateLimitResult {
     success: boolean;

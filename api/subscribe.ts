@@ -1,8 +1,68 @@
 import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { checkRateLimit } from '../src/lib/rate-limit';
+import { Redis } from '@upstash/redis';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Create Redis instance strictly from env vars
+// If vars are missing, or initialization fails, redis will be null
+let redis: Redis | null = null;
+try {
+  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+    redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    });
+  }
+} catch (error) {
+  console.warn('Failed to initialize Redis:', error);
+  redis = null;
+}
+
+interface RateLimitResult {
+  success: boolean;
+  limit: number;
+  remaining: number;
+  reset: number;
+}
+
+async function checkRateLimit(
+  identifier: string,
+  limit: number = 5,
+  durationInSeconds: number = 3600
+): Promise<RateLimitResult> {
+  if (!redis) {
+    return {
+      success: true,
+      limit,
+      remaining: limit,
+      reset: Date.now() + durationInSeconds * 1000,
+    };
+  }
+
+  const key = `rate_limit:${identifier}`;
+
+  try {
+    const requests = await redis.incr(key);
+    if (requests === 1) {
+      await redis.expire(key, durationInSeconds);
+    }
+    const ttl = await redis.ttl(key);
+
+    return {
+      success: requests <= limit,
+      limit,
+      remaining: Math.max(0, limit - requests),
+      reset: Date.now() + ttl * 1000,
+    };
+  } catch (error) {
+    return {
+      success: true,
+      limit,
+      remaining: limit,
+      reset: Date.now() + durationInSeconds * 1000,
+    };
+  }
+}
+
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
@@ -22,15 +82,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Rate Limiting
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
-  const rateLimit = await checkRateLimit(ip.toString());
+  try {
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+    const rateLimit = await checkRateLimit(ip.toString());
 
-  res.setHeader('X-RateLimit-Limit', rateLimit.limit);
-  res.setHeader('X-RateLimit-Remaining', rateLimit.remaining);
-  res.setHeader('X-RateLimit-Reset', rateLimit.reset);
+    res.setHeader('X-RateLimit-Limit', rateLimit.limit);
+    res.setHeader('X-RateLimit-Remaining', rateLimit.remaining);
+    res.setHeader('X-RateLimit-Reset', rateLimit.reset);
 
-  if (!rateLimit.success) {
-    return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+    if (!rateLimit.success) {
+      return res.status(429).json({ error: 'Too many requests. Please try again later.' });
+    }
+  } catch (rateLimitError) {
+    console.error('Rate limit check failed (failing open):', rateLimitError);
+    // Continue execution if rate limiting fails
   }
 
   const { email } = req.body;
@@ -39,6 +104,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Valid email address required' });
   }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not defined');
+    return res.status(500).json({ error: 'Server configuration error' });
+  }
+
+  const resend = new Resend(apiKey);
 
   try {
     // Add contact to Resend
@@ -65,7 +138,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Send welcome email
-    await sendWelcomeEmail(email);
+    await sendWelcomeEmail(email, resend);
 
     return res.status(200).json({
       success: true,
@@ -84,7 +157,7 @@ function isValidEmail(email: string): boolean {
   return regex.test(email);
 }
 
-async function sendWelcomeEmail(email: string) {
+async function sendWelcomeEmail(email: string, resend: Resend) {
   try {
     // Simple welcome email for now
     const { error } = await resend.emails.send({
