@@ -53,7 +53,7 @@ async function checkRateLimit(
       remaining: Math.max(0, limit - requests),
       reset: Date.now() + ttl * 1000,
     };
-  } catch (error) {
+  } catch {
     return {
       success: true,
       limit,
