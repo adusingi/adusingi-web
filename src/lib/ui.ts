@@ -7,30 +7,50 @@ export function setupMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    if (menuBtn && mobileMenu) {
-        // Clone to remove existing listeners if re-initialized (safety check not strictly needed if only called once)
-        const newMenuBtn = menuBtn.cloneNode(true);
-        if (menuBtn.parentNode) {
-            menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
-        }
-
-        // Actually, simple addEventListener is fine if we stick to DOMContentLoaded once.
-        // But replacing is safer if we ever use client-side navigation.
-        // For now, let's keep it simple and just attach.
-        // Reverting clone logic to avoid breaking references if other scripts hold them.
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-            });
-        });
+    if (!menuBtn || !mobileMenu) {
+        console.warn('Mobile menu elements not found');
+        return;
     }
+
+    // Toggle logic
+    const toggleMenu = (e: MouseEvent) => {
+        e.preventDefault();
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }
+    };
+
+    const closeMenu = () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+    };
+
+    // Use onclick to ensure we don't stack listeners
+    menuBtn.onclick = (e) => toggleMenu(e as MouseEvent);
+
+    mobileLinks.forEach(link => {
+        // We can safely add this listener as it's harmless if duplicated (just sets classes)
+        // catching the click to close the menu
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close on click outside
+    const handleOutsideClick = (e: MouseEvent) => {
+        const target = e.target as Node;
+        if (!menuBtn.contains(target) && !mobileMenu.contains(target) && !mobileMenu.classList.contains('hidden')) {
+            closeMenu();
+        }
+    };
+
+    // Remove previous listener if it exists? 
+    // Hard to do with anonymous function. We'll rely on this not accumulating indefinitely 
+    // or just accept it for now as page reload clears it.
+    document.addEventListener('click', handleOutsideClick);
 }
 
 export function setupVideoModal() {
