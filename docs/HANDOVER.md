@@ -9,8 +9,8 @@
 ## 2. Technology Stack
 - **Build System:** [Vite](https://vitejs.dev/) (Fast development server and bundler)
 - **Language:** TypeScript / Vanilla JavaScript
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) (Currently loaded via CDN in `index.html`)
-- **Icons:** [Lucide Icons](https://lucide.dev/) (Loaded via CDN)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) (PostCSS via Vite)
+- **Icons:** [Lucide Icons](https://lucide.dev/) (Vanilla JS bundle)
 - **Package Manager:** `pnpm`
 
 ## 3. Architecture & Implementation Patterns
@@ -18,10 +18,8 @@
 This project operates as a **static site** but uses a modern Vite build chain.
 - **Rendering:** All HTML is static in `index.html`. There is **NO** Client-Side Rendering (CSR) framework (like React or Vue) controlling the DOM structure.
 - **Interactivity:** `index.tsx` serves as the entry point for "sprinkles" of interactivity (mobile menu, scroll effects). It uses standard DOM APIs (`document.getElementById`, `addEventListener`).
-- **Styling Strategy:** Utility-first using Tailwind. Note that Tailwind is currently loaded via a `<script src="https://cdn.tailwindcss.com"></script>` tag. This is great for prototyping but differs from a standard "build-step" Tailwind setup.
+- **Styling Strategy:** Utility-first using Tailwind CSS 4 with `@theme` configuration in `style.css`.
 
-> [!NOTE]
-> **React Discrepancy:** The `package.json` includes `react`, `react-dom`, and `@vitejs/plugin-react`. However, the application **does not use React** for rendering. `index.tsx` does not call `createRoot` or `ReactDOM.render`. These dependencies are currently unused overhead or remnants of a project template.
 
 ## 4. Directory Structure
 The project uses a flat structure for simplicity:
@@ -44,9 +42,9 @@ adusingi-web/
 
 ## 6. Recommendations for Next Team
 > [!IMPORTANT]
-> **Cleanup Opportunities:**
-> 1.  **Remove Unused React:** If the intention is to keep this simple, remove `react`, `react-dom`, and `@vitejs/plugin-react`.
-> 2.  **Migrate Tailwind:** Move from CDN-based Tailwind to specific PostCSS installation for better performance.
+> **Next Steps:**
+> 1.  **Blog Pagination:** The `build-posts.ts` script supports pagination, but the frontend implementation uses a single list. Consider implementing "Load More" or numbered pagination if the number of posts grows significantly.
+> 2.  **Testing:** Currently there are no automated tests. Adding Vitest for unit testing utility functions would be beneficial.
 
 ## 7. Deployment
 Configured for **Vercel**.

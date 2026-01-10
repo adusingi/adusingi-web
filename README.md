@@ -6,9 +6,11 @@ Personal portfolio website for Aimable Dusingizimana - Project Manager & Builder
 
 - **Vite** - Build tool and dev server
 - **TypeScript** - Type safety
-- **Tailwind CSS** - Styling (via CDN)
-- **Lucide Icons** - Icon library (via CDN)
-- **Vanilla JavaScript** - Interactivity
+- **Tailwind CSS 4** - Styling via PostCSS
+- **Lucide Icons** - Icon library
+- **Vanilla JavaScript** - Interactivity (no frameworks)
+- **gray-matter** - Markdown frontmatter parsing
+- **marked** - Markdown to HTML conversion
 
 ## Getting Started
 
@@ -29,28 +31,62 @@ pnpm preview
 
 # Run linter
 pnpm lint
+
+# Build blog posts from markdown
+pnpm run build:posts
+
+# Send a blog post as newsletter (requires RESEND_API_KEY)
+pnpm run newsletter:send <post-slug>
 ```
 
 ## Project Structure
 
 ```
 adusingi-web/
-├── index.html          # Main HTML file with all content
-├── index.tsx           # JavaScript entry point for interactivity
+├── index.html          # Main landing page
+├── index.tsx           # Main page JavaScript
+├── contact.html        # Contact page
+├── contact.tsx         # Contact page JavaScript
+├── blog.html           # Blog index page
+├── blog.tsx            # Blog index JavaScript
+├── post.html           # Individual post page
+├── post.tsx            # Post page JavaScript
+├── posts/              # Markdown blog posts
+│   └── *.md            # Blog post files (YYYY-MM-DD-slug.md)
+├── scripts/
+│   └── build-posts.ts  # Converts markdown to JSON
+├── src/
+│   └── data/
+│       └── posts.json  # Generated post data (auto-generated)
+├── newsletter/
+│   ├── post-template.ts   # Email template
+│   └── send-post.ts       # Newsletter sending script
 ├── vite.config.ts      # Vite configuration
 ├── tsconfig.json       # TypeScript configuration
-├── eslint.config.js    # ESLint configuration
-└── CLAUDE.md          # AI assistant guidance
+└── CLAUDE.md           # AI assistant guidance
 ```
 
 ## Architecture
 
-This portfolio uses a vanilla HTML/JavaScript approach:
+This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 
-- **index.html** contains all the site content and structure
-- **index.tsx** adds JavaScript interactivity (mobile menu, scroll effects, animations)
-- **Tailwind CSS** is loaded via CDN for styling
-- **Lucide Icons** is loaded via CDN for icons
+### Pages
+- **[index.html](index.html)** - Main landing page with portfolio content
+- **[contact.html](contact.html)** - Contact page with Tally form embeds
+- **[blog.html](blog.html)** - Blog index with tag filtering
+- **[post.html](post.html)** - Individual blog post page
+
+### Blog System
+- **Markdown posts** in `/posts` directory with YAML frontmatter
+- **Build-time generation** - markdown converted to JSON at build time
+- **Static output** - all blog data in `src/data/posts.json`
+- **Tag filtering** - client-side filtering on blog index
+- **SEO-friendly URLs** - Vercel rewrites for clean URLs (`/blog/post-slug`)
+
+### Styling
+- **Tailwind CSS 4** via PostCSS build
+- **Custom fonts**: Inconsolata, Cormorant Garamond, Noto Serif JP
+- **Reveal animations** using IntersectionObserver
 
 ## Deployment
 
@@ -75,7 +111,77 @@ The build process runs TypeScript type checking followed by Vite build, outputti
 - Projects showcase
 - Experience timeline
 - Interests section
-- Contact information
+- Contact page with multiple forms
+- **Blog system** with markdown posts
+- **Tag filtering** for blog posts
+- **Newsletter integration** with Resend
+
+## Blog Usage
+
+### Adding a New Post
+
+1. Create a new markdown file in `/posts` with the naming format: `YYYY-MM-DD-slug.md`
+
+```bash
+# Example
+posts/2024-12-15-my-new-post.md
+```
+
+2. Add YAML frontmatter at the top of the file:
+
+```yaml
+---
+title: "Your Post Title"
+date: 2024-12-15
+description: "Brief description for SEO and previews"
+tags: ["tag1", "tag2"]
+draft: false
+---
+
+Your markdown content here...
+```
+
+3. Build the posts:
+
+```bash
+pnpm run build:posts
+```
+
+4. The post will appear on `/blog` and be accessible at `/blog/my-new-post`
+
+### Draft Posts
+
+Set `draft: true` in the frontmatter to exclude a post from the build:
+
+```yaml
+---
+title: "Work in Progress"
+draft: true
+---
+```
+
+### Sending Newsletter
+
+To send a blog post as a newsletter via Resend:
+
+1. Set up your environment variables:
+
+```bash
+# Copy .env.example to .env
+cp .env.example .env
+
+# Add your Resend API key
+RESEND_API_KEY=re_your_api_key_here
+NEWSLETTER_TO=recipient@example.com
+```
+
+2. Send the newsletter:
+
+```bash
+pnpm run newsletter:send my-post-slug
+```
+
+**Note**: You'll need to configure a verified sending domain in your Resend account and update the `from` address in `newsletter/send-post.ts`.
 
 ## License
 

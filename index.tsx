@@ -1,6 +1,10 @@
 // Import Styles and Fonts
 import './style.css';
 import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/noto-serif-jp/400.css';
+import '@fontsource/noto-serif-jp/500.css';
+import '@fontsource/noto-serif-jp/600.css';
+import '@fontsource/noto-serif-jp/700.css';
 import '@fontsource/cormorant-garamond/400-italic.css';
 import '@fontsource/cormorant-garamond/500.css';
 import '@fontsource/cormorant-garamond/600.css';
@@ -22,7 +26,9 @@ import {
   BookOpen,
   Twitter,
   Linkedin,
-  Mail
+  Mail,
+  PlayCircle,
+  X
 } from 'lucide';
 
 // Initialize Icons
@@ -37,33 +43,20 @@ createIcons({
     BookOpen,
     Twitter,
     Linkedin,
-    Mail
+    Mail,
+    PlayCircle,
+    X
   }
 });
 
+// Import Shared Logic
+import { setupMobileMenu } from './src/lib/ui';
+import { setupVideoModal } from './src/lib/ui';
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Mobile Menu Toggle ---
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-
-      // Update Icon (Simple toggle attribute or replace SVG if needed, but standard lucide replacement happens on load)
-      // For simplicity in Vanilla with Lucide CDN, we just let it be.
-      // Or we could re-run createIcons if we changed innerHTML.
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
-  }
+  setupMobileMenu();
+  setupVideoModal();
 
   // --- Navbar Scroll Effect ---
   const navbar = document.getElementById('navbar');

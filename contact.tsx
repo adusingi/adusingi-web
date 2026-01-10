@@ -1,6 +1,10 @@
 // Import Styles and Fonts
 import './style.css';
 import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/noto-serif-jp/400.css';
+import '@fontsource/noto-serif-jp/500.css';
+import '@fontsource/noto-serif-jp/600.css';
+import '@fontsource/noto-serif-jp/700.css';
 import '@fontsource/cormorant-garamond/400-italic.css';
 import '@fontsource/cormorant-garamond/500.css';
 import '@fontsource/cormorant-garamond/600.css';
@@ -24,6 +28,9 @@ import {
   Mail
 } from 'lucide';
 
+// Import Shared Logic
+import { setupMobileMenu } from './src/lib/ui';
+
 // Initialize Icons
 createIcons({
   icons: {
@@ -40,24 +47,7 @@ createIcons({
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Mobile Menu Toggle ---
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('flex');
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('flex');
-      });
-    });
-  }
+  setupMobileMenu();
 
   // --- Contact Form Toggle ---
   const contactForms = document.querySelectorAll('.contact-form');

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aimable Dusingizimana | Adusingi</title>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="229fddfb-58f9-4ef5-827a-fa74bebf2d8a"></script>
   <meta name="description"
     content="Code, Craft &amp; Culture from rural Japan. Builder, explorer, Tai-Chi practitioner, and travel planner based in Okayama.">
 
@@ -32,11 +33,14 @@
   <meta name="twitter:image" content="https://www.adusingi.com/og-image.jpeg">
   <meta name="twitter:image:alt" content="Aimable Dusingizimana - Code, Craft &amp; Culture from rural Japan">
 
-  <!-- Google Fonts - Noto Serif JP for Japanese text -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <<<<<<< HEAD <!-- Google Fonts - Noto Serif JP for Japanese text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+    =======
+    <!-- Google Fonts - Self-hosted via @fontsource -->
+    >>>>>>> 714f5ec839178555265f39d61d557756f0aa1260
 </head>
 
 <body class="bg-stone-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
@@ -59,6 +63,8 @@
           class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Experience</a>
         <a href="/booking.html"
           class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Booking</a>
+        <a href="/blog.html"
+          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Blog</a>
         <a href="/contact.html"
           class="px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
           in Touch</a>
@@ -81,9 +87,13 @@
         class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Experience</a>
       <a href="/booking.html"
         class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Booking</a>
-      <a href="/contact.html"
-        class="mobile-link inline-block mt-2 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
-        in Touch</a>
+      <a href="/blog.html"
+        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Blog</a>
+      <div class="flex justify-center mt-2">
+        <a href="/contact.html"
+          class="mobile-link inline-block px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
+          in Touch</a>
+      </div>
     </div>
   </nav>
 
@@ -116,13 +126,14 @@
           Available for projects, consultations, and retreats in Japan.
         </p>
 
-        <div class="reveal reveal-delay-200 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <div
+          class="reveal reveal-delay-200 flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center md:items-start">
           <a href="#projects"
-            class="min-w-[180px] text-center px-8 py-3 bg-slate-900 text-white font-medium rounded-[50px] hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
+            class="inline-block px-8 py-3 bg-slate-900 text-white font-medium rounded-[50px] hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
             View My Work
           </a>
           <a href="https://www.linkedin.com/in/aimable-dusingizimana-1929461" target="_blank" rel="noopener noreferrer"
-            class="min-w-[180px] text-center px-8 py-3 bg-white border border-slate-200 text-slate-700 font-medium rounded-[50px] hover:border-slate-400 transition-colors">
+            class="hidden sm:inline-block px-8 py-3 bg-white border border-slate-200 text-slate-700 font-medium rounded-[50px] hover:border-slate-400 transition-colors">
             LinkedIn
           </a>
         </div>
@@ -230,6 +241,7 @@
           </a>
 
           <!-- Project 4 -->
+
           <div
             class="reveal reveal-delay-100 group relative flex flex-col justify-between p-8 bg-stone-50 border border-slate-100 rounded-2xl hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
             <div>
@@ -241,18 +253,20 @@
               </div>
               <h3
                 class="text-3xl font-serif font-semibold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
-                Japan
-                Travel Planning App</h3>
+                Family History & Connection App</h3>
               <p class="text-slate-700 leading-relaxed mb-6">
-                An application in development designed to streamline travel planning for visitors to Japan.
+                Who are we today? An interactive, visual map that serves as a living directory to bridge the
+                generational gap and keep family bonds active.
               </p>
             </div>
             <div class="flex flex-wrap gap-2 mt-auto">
               <span
-                class="px-3 py-1 bg-white border border-slate-200 rounded-[50px] text-xs font-medium text-slate-500">SaaS</span>
-              <span
-                class="px-3 py-1 bg-white border border-slate-200 rounded-[50px] text-xs font-medium text-slate-500">Travel
+                class="px-3 py-1 bg-white border border-slate-200 rounded-[50px] text-xs font-medium text-slate-500">Family
                 Tech</span>
+              <span
+                class="px-3 py-1 bg-white border border-slate-200 rounded-[50px] text-xs font-medium text-slate-500">Genealogy</span>
+              <span
+                class="px-3 py-1 bg-white border border-slate-200 rounded-[50px] text-xs font-medium text-slate-500">Private</span>
             </div>
           </div>
         </div>
@@ -283,7 +297,11 @@
               Practitioner (4+ years) under Master Kiyoko Kashiwagi, with a diploma from Grandmaster William C.C. Chen
               lineage.
             </p>
-            <div class="mt-auto"></div>
+            <button id="open-taichi-video"
+              class="mt-auto mx-auto inline-flex w-44 justify-center items-center gap-2 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">
+              <i data-lucide="play-circle" class="w-4 h-4"></i>
+              <span>Watch Practice</span>
+            </button>
           </div>
 
           <!-- Interest 2 -->
@@ -297,8 +315,12 @@
               I organize team-building retreats in Japan and provide travel planning for individuals or teams, as well
               as Tai-Chi (<span class="font-jp">太極拳</span>) classes online or in-person.
             </p>
-            <a href="/contact.html"
+            <a href="/contact.html" <<<<<<< HEAD
               class="mt-auto inline-block mx-auto px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors text-center">Let's
+              =======
+              class="mt-auto inline-block mx-auto w-44 px-5 py-2 bg-slate-900 text-white text-sm font-medium
+              rounded-full hover:bg-slate-800 transition-colors text-center">Let's
+              >>>>>>> 714f5ec839178555265f39d61d557756f0aa1260
               Talk</a>
           </div>
 
@@ -308,11 +330,13 @@
             <div class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-700 mb-4">
               <i data-lucide="feather" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-2xl font-serif font-semibold text-slate-900 mb-2">Writing & Experiments</h3>
+            <h3 class="text-2xl font-serif font-semibold text-slate-900 mb-2">Creative Builds</h3>
             <p class="text-sm text-slate-700 leading-relaxed mb-4 flex-grow">
               Writing about AI, blockchain, and code experiments. Building tools and documenting processes.
             </p>
-            <div class="mt-auto"></div>
+            <a href="/blog.html"
+              class="mt-auto inline-block mx-auto w-44 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors text-center">Read
+              Blog</a>
           </div>
 
           <!-- Interest 4 -->
@@ -321,9 +345,10 @@
             <div class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-700 mb-4">
               <i data-lucide="book-open" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-2xl font-serif font-semibold text-slate-900 mb-2">Tech Exploration</h3>
+            <h3 class="text-2xl font-serif font-semibold text-slate-900 mb-2">Educator</h3>
             <p class="text-sm text-slate-700 leading-relaxed mb-4 flex-grow">
-              Always testing new tech. Currently focused on AI, blockchain, and building code.
+              Whether it's teaching Tai Chi, leading blockchain workshops for African government staff, or one-on-one AI
+              mentoring—I find purpose in helping others learn.
             </p>
             <div class="mt-auto"></div>
           </div>
@@ -399,7 +424,7 @@
                 <h3 class="font-serif font-bold text-slate-800 text-2xl">Doko Maps</h3>
                 <time class="font-mono text-xs text-slate-400">Nov 2019 - Sep 2021</time>
               </div>
-              <div class="text-sm font-medium text-slate-500 mb-3">Senior Project Manager • Okayama, Japan</div>
+              <div class="text-sm font-medium text-slate-500 mb-3">Software Project Manager • Okayama, Japan</div>
               <ul class="list-disc list-outside ml-4 space-y-1 text-sm text-slate-700 leading-relaxed">
                 <li>Coordinated feature release phases using Agile methodology and Jira.</li>
                 <li>Managed remote teams and designed user onboarding documentation.</li>
@@ -476,15 +501,15 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-stone-100">
+    <section class="py-20 bg-navy">
       <div class="max-w-3xl mx-auto px-4 md:px-8 text-center reveal">
-        <h2 class="text-2xl md:text-3xl font-serif text-slate-900 mb-4">Working on something in Japan?</h2>
-        <p class="text-slate-700 mb-8 max-w-xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-serif text-white mb-4">Working on something in Japan?</h2>
+        <p class="text-slate-300 mb-8 max-w-xl mx-auto">
           I'm happy to chat about projects, team retreats, travel planning, or Tai-Chi (<span
             class="font-jp">太極拳</span>) sessions.
         </p>
         <a href="/contact.html"
-          class="inline-block px-8 py-3 bg-slate-900 text-white font-medium rounded-full hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
+          class="inline-block px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors shadow-lg shadow-black/10">
           Start a Conversation
         </a>
       </div>
@@ -492,7 +517,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-300 py-10">
+  <footer class="bg-navy text-slate-300 py-10 border-t border-white/20">
     <div class="max-w-6xl mx-auto px-4 md:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <p class="text-sm text-white">&copy; 2025 Aimable Dusingizimana. Based in Okayama, Japan.</p>
@@ -516,6 +541,39 @@
       </div>
     </div>
   </footer>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+    aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop">
+    </div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+        <!-- Modal Panel -->
+        <div
+          class="relative transform overflow-hidden rounded-2xl bg-black text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl opacity-0 scale-95"
+          id="modal-panel">
+          <!-- Close Button -->
+          <button id="close-video-modal" type="button"
+            class="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors backdrop-blur-md">
+            <span class="sr-only">Close</span>
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+
+          <!-- Video Container (16:9 aspect ratio) -->
+          <div class="relative aspect-video w-full bg-black">
+            <iframe id="youtube-player" class="absolute inset-0 w-full h-full" src="" title="Tai Chi Practice"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Load Main Script -->
   <script type="module" src="./index.tsx"></script>

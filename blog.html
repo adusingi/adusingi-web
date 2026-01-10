@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Aimable Dusingizimana</title>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="229fddfb-58f9-4ef5-827a-fa74bebf2d8a"></script>
+  <meta name="description"
+    content="Thoughts on tech, Japan, Tai-Chi, and building digital products from rural Okayama.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.adusingi.com/blog">
+  <meta property="og:site_name" content="Aimable Dusingizimana">
+  <meta property="og:title" content="Blog | Aimable Dusingizimana">
+  <meta property="og:description"
+    content="Thoughts on tech, Japan, Tai-Chi, and building digital products from rural Okayama.">
+  <meta property="og:image" content="https://www.adusingi.com/og-image.jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Adusingi">
+  <meta name="twitter:title" content="Blog | Aimable Dusingizimana">
+  <meta name="twitter:description"
+    content="Thoughts on tech, Japan, Tai-Chi, and building digital products from rural Okayama.">
+  <meta name="twitter:image" content="https://www.adusingi.com/og-image.jpeg">
+
+  <!-- Google Fonts - Self-hosted via @fontsource -->
+</head>
+
+<body class="bg-stone-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="/" class="font-serif font-semibold tracking-tight text-navy leading-tight">
+        <span class="text-2xl">Aimable DUSINGIZIMANA</span><br />
+        <span class="text-navy/60 italic text-xs font-normal">Dusingize: Praise · Imana: God</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/#projects"
+          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Projects</a>
+        <a href="/#interests"
+          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Interests</a>
+        <a href="/#experience"
+          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Experience</a>
+        <a href="/blog.html" class="font-serif text-base font-medium text-navy transition-colors">Blog</a>
+        <a href="/contact.html"
+          class="px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
+          in Touch</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="menu-btn" class="md:hidden text-navy p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 px-4 flex-col space-y-4">
+      <a href="/#projects"
+        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Projects</a>
+      <a href="/#interests"
+        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Interests</a>
+      <a href="/#experience"
+        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Experience</a>
+      <a href="/blog.html" class="mobile-link font-serif text-base font-medium text-navy block">Blog</a>
+      <a href="/contact.html"
+        class="mobile-link inline-block mt-2 px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
+        in Touch</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="reveal">
+          <h1 class="text-4xl md:text-5xl font-serif font-medium text-slate-900 mb-4">
+            Blog
+          </h1>
+          <p class="text-lg text-slate-600 max-w-2xl">
+            Thoughts on tech, Japan, Tai-Chi (太極拳), and building digital products from rural Okayama.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tag Filter -->
+    <section class="pb-8">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div id="tag-filter" class="flex flex-wrap gap-2">
+          <button data-tag="all"
+            class="tag-btn active px-4 py-2 text-sm font-medium rounded-full transition-colors bg-slate-900 text-white">
+            All Posts
+          </button>
+          <!-- Tags will be dynamically inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="pb-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div id="posts-container" class="space-y-8">
+          <!-- Posts will be dynamically inserted here -->
+          <div class="text-center text-slate-500 py-12">
+            Loading posts...
+          </div>
+        </div>
+
+        <!-- No posts message (hidden by default) -->
+        <div id="no-posts" class="hidden text-center text-slate-500 py-12">
+          <p class="text-lg">No posts found with the selected tag.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="py-20 bg-navy">
+      <div class="max-w-3xl mx-auto px-4 md:px-8 text-center reveal">
+        <h2 class="text-2xl md:text-3xl font-serif text-white mb-4">Get new posts via email</h2>
+        <p class="text-slate-300 mb-8 max-w-xl mx-auto">
+          Join fellow builders, developers, and Japan enthusiasts.
+          One email per post, no spam, unsubscribe anytime.
+        </p>
+
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input id="newsletter-email" type="email" placeholder="your@email.com" required
+            class="flex-1 px-5 py-3 bg-white border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent" />
+          <button id="newsletter-submit" type="submit"
+            class="px-8 py-3 bg-white text-navy font-medium rounded-full hover:bg-slate-100 transition-colors whitespace-nowrap shadow-lg shadow-black/10">
+            Subscribe
+          </button>
+        </form>
+
+        <div id="newsletter-message" class="hidden mt-3"></div>
+
+        <p class="text-xs text-slate-400 mt-4">
+          By subscribing, you agree to receive email updates. No spam, ever.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy text-slate-300 py-10 border-t border-white/20">
+    <div class="max-w-6xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-sm text-white">&copy; 2025 Aimable Dusingizimana. Based in Okayama, Japan.</p>
+
+        <div class="flex space-x-6">
+          <a href="https://x.com/Adusingi" target="_blank" rel="noopener noreferrer"
+            class="hover:text-white transition-colors">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
+            <span class="sr-only">X (Twitter)</span>
+          </a>
+          <a href="https://www.linkedin.com/in/aimable-dusingizimana-1929461" target="_blank" rel="noopener noreferrer"
+            class="hover:text-white transition-colors">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+          <a href="/contact.html" class="hover:text-white transition-colors">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+            <span class="sr-only">Contact</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load Main Script -->
+  <script type="module" src="./blog.tsx"></script>
+</body>
+
+</html>
