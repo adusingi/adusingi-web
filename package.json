@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:api": "vercel dev",
     "build": "pnpm run build:posts && tsc && vite build",
-    "build:posts": "tsx scripts/build-posts.ts",
+    "build:posts": "npx tsx scripts/build-posts.ts",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test": "vitest",
