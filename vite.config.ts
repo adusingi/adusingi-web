@@ -12,7 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         contact: resolve(__dirname, 'contact.html'),
-        booking: resolve(__dirname, 'booking.html'),
+        'ai-1on1': resolve(__dirname, 'ai-1on1.html'),
         blog: resolve(__dirname, 'blog.html'),
         post: resolve(__dirname, 'post.html')
       }
