@@ -1,18 +1,6 @@
 {
   "posts": [
     {
-      "slug": "welcome-to-my-blog",
-      "title": "Welcome to My Blog",
-      "date": "2024-12-01T00:00:00.000Z",
-      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
-      "tags": [
-        "meta",
-        "blogging",
-        "japan"
-      ],
-      "pinned": true
-    },
-    {
       "slug": "ai-web-development-stack",
       "title": "The AI Web Development Stack I Actually use in Production (Not Just Demos)",
       "date": "2026-01-14T00:00:00.000Z",
@@ -76,6 +64,18 @@
         "typescript",
         "blogging",
         "web-dev"
+      ],
+      "pinned": false
+    },
+    {
+      "slug": "welcome-to-my-blog",
+      "title": "Welcome to My Blog",
+      "date": "2024-12-01T00:00:00.000Z",
+      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
+      "tags": [
+        "meta",
+        "blogging",
+        "japan"
       ],
       "pinned": false
     },
