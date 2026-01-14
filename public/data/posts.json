@@ -13,6 +13,20 @@
       "pinned": true
     },
     {
+      "slug": "one-prompt-one-website",
+      "title": "One Prompt. One Hour. One Website.",
+      "date": "2025-01-14T00:00:00.000Z",
+      "description": "How I built my entire portfolio website in under an hour using AI - and why this changes everything for non-technical founders.",
+      "tags": [
+        "ai",
+        "web-development",
+        "no-code",
+        "career",
+        "antigravity"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "life-in-rural-japan",
       "title": "Code, Craft & Culture: Building from Rural Japan",
       "date": "2024-12-15T00:00:00.000Z",

@@ -30,6 +30,28 @@ pnpm test             # Run tests with vitest
 pnpm newsletter:send <post-slug>  # Send blog post as newsletter (requires RESEND_API_KEY)
 ```
 
+## 🚨 Deployment Rules - REQUIRE EXPLICIT CONSENT
+
+**NEVER deploy without explicit user permission:**
+- Blog posts
+- New features  
+- Code changes
+- Configuration updates
+
+**Deployment workflow:**
+1. **ASK FIRST**: Always ask "Ready to deploy this?"
+2. **WAIT**: Wait for explicit "yes" or "deploy now" response
+3. **CONFIRM**: Briefly describe what will be deployed
+4. **PROCEED**: Only then run deployment commands
+
+**Emergency exceptions only:**
+- Critical security fixes
+- Breaking production issues
+- WITH immediate user notification
+
+**Blog Post Process:**
+- Write content → Build → Preview locally → **ASK FOR APPROVAL** → Deploy
+
 ## Architecture
 
 This is a **vanilla HTML/JavaScript** project, not a React app. It uses a **multi-page** setup:

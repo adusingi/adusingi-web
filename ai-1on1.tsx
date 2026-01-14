@@ -24,6 +24,9 @@ import {
     Mail
 } from 'lucide';
 
+// Import Shared Logic
+import { setupMobileMenu } from './src/lib/ui';
+
 // Initialize Icons
 createIcons({
     icons: {
@@ -41,23 +44,7 @@ createIcons({
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Menu Toggle ---
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-            });
-        });
-    }
+    setupMobileMenu();
 
     // --- Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');

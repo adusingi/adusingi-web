@@ -126,8 +126,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const postTags = document.getElementById('post-tags');
   if (postTags) {
-    postTags.innerHTML = post.tags.map(tag => `
-      <a href="/blog.html?tag=${tag}" class="px-3 py-1 bg-slate-50 text-slate-600 text-sm font-medium rounded-full hover:bg-slate-100 transition-colors">
+    // Sanitize tag names to prevent XSS
+    const sanitizedTags = post.tags.map(tag => 
+      tag.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    );
+    
+    postTags.innerHTML = sanitizedTags.map(tag => `
+      <a href="/blog.html?tag=${encodeURIComponent(tag)}" class="px-3 py-1 bg-slate-50 text-slate-600 text-sm font-medium rounded-full hover:bg-slate-100 transition-colors">
         ${tag}
       </a>
     `).join('');
