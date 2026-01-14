@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 // Mock the entire build process
 const mockBuildProcess = vi.fn().mockResolvedValue(undefined)
+mockBuildProcess
 
 describe('Build Posts Process Integration', () => {
   beforeEach(() => {
@@ -76,8 +77,8 @@ describe('Build Posts Process Integration', () => {
         tags: ['test']
       }
 
-      expect(frontmatter.pinned).toBeUndefined()
-      expect(frontmatter.draft).toBeUndefined()
+      expect((frontmatter as any).pinned).toBeUndefined()
+      expect((frontmatter as any).draft).toBeUndefined()
     })
   })
 
@@ -223,14 +224,12 @@ describe('Build Posts Process Integration', () => {
     it('should handle missing posts directory', () => {
       const mockExists = vi.fn(() => false)
       
-      if (!mockExists('posts')) {
+      if (!mockExists()) {
         expect(true).toBe(true) // Should handle gracefully
       }
     })
 
     it('should handle invalid frontmatter', () => {
-      const invalidContent = '---\ninvalid yaml\n---\n# Content'
-      
       // Should handle parsing errors gracefully
       expect(() => {
         // Simulate frontmatter parsing error
@@ -244,7 +243,7 @@ describe('Build Posts Process Integration', () => {
       })
 
       try {
-        mockReadFile('test.md')
+        mockReadFile()
       } catch (error) {
         expect(error).toBeInstanceOf(Error)
       }

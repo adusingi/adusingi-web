@@ -88,7 +88,6 @@ describe('Newsletter Form Validation', () => {
   it('should validate valid email format', async () => {
     const form = document.getElementById('newsletter-form') as HTMLFormElement
     const input = document.getElementById('newsletter-email') as HTMLInputElement
-    const message = document.getElementById('newsletter-message') as HTMLDivElement
 
     initNewsletterForm()
 
