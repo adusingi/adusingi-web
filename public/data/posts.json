@@ -13,6 +13,20 @@
       "pinned": true
     },
     {
+      "slug": "i-almost-gave-up-on-ai",
+      "title": "I Almost Gave Up on AI — Until It Finally Made Sense",
+      "date": "2026-01-06T00:00:00.000Z",
+      "description": "How Andrej Karpathy's content transformed my relationship with AI from resistance to real adoption, and why you don't need to master the math to use AI seriously.",
+      "tags": [
+        "ai",
+        "llm",
+        "machine-learning",
+        "career",
+        "andrej-karpathy"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "one-prompt-one-website",
       "title": "One Prompt. One Hour. One Website.",
       "date": "2025-12-20T00:00:00.000Z",
