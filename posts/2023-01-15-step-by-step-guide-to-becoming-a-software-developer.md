@@ -70,7 +70,7 @@ Contributing to open source projects is very appreciated by recruiters. Look for
 
 ## Web Development
 
-I created a list of resources dedicated to website development that you can find on my [Web Dev Resources](https://devhub.adusingi.com) page.
+I created a list of resources dedicated to website development that you can find on my [Web Dev Resources](https://dev.adusingi.com) page.
 
 ## Learn How to Work on Collaborative Projects
 

@@ -1,21 +1,9 @@
 import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Redis } from '@upstash/redis';
 
-// Create Redis instance strictly from env vars
-// If vars are missing, or initialization fails, redis will be null
-let redis: Redis | null = null;
-try {
-  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-    redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
-    });
-  }
-} catch (error) {
-  console.warn('Failed to initialize Redis:', error);
-  redis = null;
-}
+// In-memory rate limiting store
+// Persists during function warm period, resets on cold start
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
 
 interface RateLimitResult {
   success: boolean;
@@ -29,38 +17,47 @@ async function checkRateLimit(
   limit: number = 5,
   durationInSeconds: number = 3600
 ): Promise<RateLimitResult> {
-  if (!redis) {
-    return {
-      success: true,
-      limit,
-      remaining: limit,
-      reset: Date.now() + durationInSeconds * 1000,
-    };
-  }
-
+  const now = Date.now();
   const key = `rate_limit:${identifier}`;
-
-  try {
-    const requests = await redis.incr(key);
-    if (requests === 1) {
-      await redis.expire(key, durationInSeconds);
-    }
-    const ttl = await redis.ttl(key);
-
-    return {
-      success: requests <= limit,
-      limit,
-      remaining: Math.max(0, limit - requests),
-      reset: Date.now() + ttl * 1000,
+  
+  // Get or create rate limit entry
+  let entry = rateLimitStore.get(key);
+  
+  if (!entry || now > entry.resetTime) {
+    // Create new entry if expired or doesn't exist
+    entry = {
+      count: 1,
+      resetTime: now + (durationInSeconds * 1000)
     };
-  } catch {
+    rateLimitStore.set(key, entry);
+    
     return {
       success: true,
       limit,
-      remaining: limit,
-      reset: Date.now() + durationInSeconds * 1000,
+      remaining: limit - 1,
+      reset: entry.resetTime,
     };
   }
+  
+  // Increment existing entry
+  entry.count++;
+  rateLimitStore.set(key, entry);
+  
+  // Clean up expired entries periodically
+  if (Math.random() < 0.1) { // 10% chance to clean up
+    for (const [storeKey, storeEntry] of rateLimitStore.entries()) {
+      if (now > storeEntry.resetTime) {
+        rateLimitStore.delete(storeKey);
+      }
+    }
+  }
+  
+  return {
+    success: entry.count <= limit,
+    limit,
+    remaining: Math.max(0, limit - entry.count),
+    reset: entry.resetTime,
+  };
 }
 
 
