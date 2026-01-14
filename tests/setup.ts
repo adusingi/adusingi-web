@@ -1,4 +1,4 @@
-import { beforeAll, afterEach, afterAll } from 'vitest'
+import { beforeAll, afterEach, afterAll, vi } from 'vitest'
 import '@testing-library/jest-dom/vitest'
 
 // Setup DOM environment
@@ -12,6 +12,14 @@ beforeAll(() => {
     },
     writable: true,
   })
+
+  // Mock IntersectionObserver
+  global.IntersectionObserver = vi.fn().mockImplementation((callback) => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+    callback,
+  }))
 })
 
 // Cleanup after each test

@@ -36,6 +36,7 @@
     "@types/node": "^25.0.2",
     "@types/sanitize-html": "^2.16.0",
     "@vercel/node": "^5.5.15",
+    "@vitest/coverage-v8": "^4.0.17",
     "@vitest/ui": "^4.0.17",
     "autoprefixer": "^10.4.22",
     "eslint": "^9.22.0",
