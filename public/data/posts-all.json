@@ -12,6 +12,20 @@
     "pinned": true
   },
   {
+    "slug": "ai-web-development-stack",
+    "title": "The AI Web Development Stack I Actually use in Production (Not Just Demos)",
+    "date": "2026-01-14T00:00:00.000Z",
+    "description": "Real tools and production-ready stack for AI-assisted web development - from frontend to infrastructure, based on actual shipped projects.",
+    "tags": [
+      "ai",
+      "web-development",
+      "production",
+      "stack",
+      "tools"
+    ],
+    "pinned": false
+  },
+  {
     "slug": "i-almost-gave-up-on-ai",
     "title": "I Almost Gave Up on AI — Until It Finally Made Sense",
     "date": "2026-01-06T00:00:00.000Z",
