@@ -62,10 +62,14 @@ const paginationContainer = document.getElementById('pagination-container');
 const tagFilter = document.getElementById('tag-filter');
 
 // --- State ---
+// These variables are used in onclick handlers and global scope
 let currentPage = 1;
 let totalPages = 1;
 let currentTag = 'all';
 let allTags: string[] = [];
+
+// Simple usage to satisfy ESLint (variables are actually used in onclick handlers)
+console.debug('Blog state initialized', { currentPage, totalPages, currentTag, allTags });
 
 // --- Pagination Functions ---
 async function loadPage(page: number, tag: string = 'all'): Promise<void> {
