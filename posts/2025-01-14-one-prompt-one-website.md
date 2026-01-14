@@ -6,6 +6,8 @@ tags: ["ai", "web-development", "no-code", "career", "antigravity"]
 draft: false
 ---
 
+![One Prompt. One Hour. One Website](https://media.licdn.com/dms/image/v2/D5612AQEVOQKSEzqUNA/article-cover_image-shrink_720_1280/B56Zs68_yZIYAI-/0/1766220630132?e=1770249600&v=beta&t=BPSxydhIGteQAR3JVJ3cPAhNKobZiuh27Y_hyXxfYvY)
+
 Last in November 2024, I joined Nippon IT Systems, and since then, I have been working as a software engineer, which was completely new to me. Prior to joining the company, I had been managing software development teams. I did not write code in my day-to-day work. Our company offers a SaaS product, and my role involves maintaining code and adding new features. We use PHP (specifically [CakePHP](https://cakephp.org/) framework).
 
 During my years at engineering school and while managing software development teams, I acquired knowledge of how software works and became quite comfortable reading lines of code if I needed to understand a feature, etc.
