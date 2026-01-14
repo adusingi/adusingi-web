@@ -1,6 +1,6 @@
 ---
 title: "One Prompt. One Hour. One Website."
-date: 2025-01-14
+date: 2025-12-20
 description: "How I built my entire portfolio website in under an hour using AI - and why this changes everything for non-technical founders."
 tags: ["ai", "web-development", "no-code", "career", "antigravity"]
 draft: false
@@ -51,4 +51,4 @@ I'm working with a small group of professionals to do exactly that—no coding o
 
 ---
 
-*This article was originally published on LinkedIn and adapted for this blog.*
+*Originally published on LinkedIn on December 20, 2025, and adapted for this blog.*
