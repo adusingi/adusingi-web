@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 // Mock the entire build process
 const mockBuildProcess = vi.fn().mockResolvedValue(undefined)
-mockBuildProcess
+void mockBuildProcess()
 
 describe('Build Posts Process Integration', () => {
   beforeEach(() => {
@@ -77,7 +77,9 @@ describe('Build Posts Process Integration', () => {
         tags: ['test']
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect((frontmatter as any).pinned).toBeUndefined()
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect((frontmatter as any).draft).toBeUndefined()
     })
   })

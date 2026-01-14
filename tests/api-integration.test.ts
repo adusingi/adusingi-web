@@ -1,7 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 describe('API Endpoint Integration', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let mockReq: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let mockRes: any
 
   beforeEach(() => {
@@ -70,6 +72,7 @@ describe('API Endpoint Integration', () => {
       expect(ip).toBe('192.168.1.1')
       
       // Test fallback
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const nullValue: any = null
       const fallbackIp = nullValue || nullValue || 'unknown'
       expect(fallbackIp).toBe('unknown')

@@ -54,6 +54,7 @@ describe('Utils', () => {
 
         it('should return null when window is undefined', () => {
             const originalWindow = global.window;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             delete (global as any).window;
             
             const result = getSlugFromUrl();

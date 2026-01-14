@@ -206,7 +206,7 @@ describe('Blog Pagination Logic', () => {
       // Simulate the error handling from loadPage function
       try {
         await fetch('/data/posts.json')
-      } catch (error) {
+      } catch {
         if (postsContainer) {
           postsContainer.innerHTML = `
             <div class="flex flex-col items-center justify-center py-20 text-red-500">

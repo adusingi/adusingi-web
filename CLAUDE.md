@@ -30,6 +30,13 @@ pnpm test             # Run tests with vitest
 pnpm newsletter:send <post-slug>  # Send blog post as newsletter (requires RESEND_API_KEY)
 ```
 
+## 🚨 Development Rules
+
+**ALWAYS work from development branch:**
+- Switch to `development` branch before starting any work
+- Create feature branches from `development`
+- Never work directly from `main` branch
+
 ## 🚨 Deployment Rules - REQUIRE EXPLICIT CONSENT
 
 **NEVER deploy without explicit user permission:**

@@ -151,6 +151,7 @@ describe('Post Data Loading and Rendering', () => {
       noPostsMessage.className = 'hidden'
       document.body.appendChild(noPostsMessage)
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const posts: any[] = []
       
       if (posts.length === 0) {
