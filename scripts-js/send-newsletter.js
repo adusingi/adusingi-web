@@ -1,8 +1,17 @@
 import { SendMailClient } from "zeptomail";
 import fs from 'fs';
+import dotenv from 'dotenv';
 
-// Load posts data
-const posts = JSON.parse(fs.readFileSync('./src/data/posts.json', 'utf8'));
+// Load environment variables
+dotenv.config();
+
+// Load posts data (read from individual post files to get full content)
+const posts = fs.readdirSync('./public/data/posts/', { withFileTypes: true })
+  .filter(dirent => dirent.isFile() && dirent.name.endsWith('.json'))
+  .map(dirent => {
+    const post = JSON.parse(fs.readFileSync(`./public/data/posts/${dirent.name}`, 'utf8'));
+    return post;
+  });
 
 // ZeptoMail configuration
 const url = "https://api.zeptomail.com/v1.1/email";
@@ -15,104 +24,94 @@ if (!token) {
 
 const client = new SendMailClient({url, token});
 
-// Create blog post email template
 function createEmailTemplate(post) {
   const postUrl = `https://adusingi.com/blog/${post.slug}`;
+  const tagsHtml = post.tags.map(tag => 
+    `<span style="display: inline-block; background-color: #f1f5f9; color: #64748b; padding: 4px 10px; border-radius: 100px; font-size: 12px; margin-right: 6px; margin-bottom: 6px; font-weight: 500;">
+      ${tag}
+    </span>`
+  ).join('');
+
+  const imgMatch = post.content.match(/<img[^>]+src="([^"]+)"[^>]*>/i);
+  const headerImage = imgMatch ? imgMatch[1] : null;
+  const imageHtml = headerImage ? `
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom: 32px;">
+      <tr>
+        <td style="padding: 0;">
+          <img src="${headerImage}" alt="Post image" style="width: 100%; height: auto; display: block;">
+        </td>
+      </tr>
+    </table>
+  ` : '';
   
   return `
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${post.title}</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            border-bottom: 2px solid #1e293b;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .title {
-            font-size: 24px;
-            font-weight: 600;
-            color: #1e293b;
-            margin: 0 0 10px 0;
-        }
-        .meta {
-            color: #64748b;
-            font-size: 14px;
-        }
-        .content {
-            margin-bottom: 30px;
-        }
-        .content h1 { font-size: 22px; }
-        .content h2 { font-size: 20px; }
-        .content h3 { font-size: 18px; }
-        .content p { margin-bottom: 16px; }
-        .content ul, .content ol { margin-bottom: 16px; padding-left: 20px; }
-        .content li { margin-bottom: 8px; }
-        .content a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-        .content a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            border-top: 1px solid #e2e8f0;
-            padding-top: 20px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #64748b;
-        }
-        .read-more {
-            display: inline-block;
-            background-color: #1e293b;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-        .read-more:hover {
-            background-color: #334155;
-            text-decoration: none;
-            color: white;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>New Post: ${post.title}</title>
 </head>
-<body>
-    <div class="header">
-        <h1 class="title">${post.title}</h1>
-        <div class="meta">
-            ${new Date(post.date).toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}
-            ${post.tags.length > 0 ? ` • ${post.tags.map(t => '#' + t).join(' ')}` : ''}
-        </div>
-    </div>
-    
-    <div class="content">
-        ${post.content}
-    </div>
-    
-    <a href="${postUrl}" class="read-more">Read full post online</a>
-    
-    <div class="footer">
-        <p>You're receiving this email because you subscribed to Aimable Dusingizimana's newsletter.</p>
-        <p>If you'd like to unsubscribe, <a href="mailto:adusingi@mobayilo.com?subject=Unsubscribe">click here</a>.</p>
-        <p>© 2024 Aimable Dusingizimana. Building from rural Okayama, Japan.</p>
-    </div>
+<body style="margin: 0; padding: 40px 0; background-color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
+    <tr>
+      <td align="center" style="padding: 20px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; max-width: 600px;">
+          <tr>
+            <td style="padding: 48px 48px 0 48px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <span style="color: #94a3b8; font-size: 14px; font-weight: 500; margin-right: 16px;">${new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</span>
+                    <div style="display: inline-block; vertical-align: middle;">
+                      ${tagsHtml}
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 0 48px 32px 48px;">
+              <h1 style="margin: 0; font-family: 'Times New Roman', Times, serif; font-size: 32px; line-height: 1.2; color: #0f172a; font-weight: normal; margin-bottom: 24px;">
+                ${post.title}
+              </h1>
+              ${imageHtml}
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 32px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+                ${post.description}
+              </p>
+              <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <a href="${postUrl}" style="text-decoration: none; color: #334155; font-size: 16px; font-weight: 500; display: inline-block;">
+                      Read more <span style="margin-left: 4px;">&rsaquo;</span>
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 32px 48px 48px 48px; border-top: 1px solid #e2e8f0;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center" style="color: #94a3b8; font-size: 12px; line-height: 1.5;">
+                    You're receiving this email because you subscribed to Aimable Dusingizimana's newsletter.<br/>
+                    If you'd like to unsubscribe, <a href="mailto:adusingi@mobayilo.com?subject=Unsubscribe" style="color: #64748b; text-decoration: underline;">click here</a>.<br/>
+                    © 2024 Aimable Dusingizimana. Building from rural Okayama, Japan.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
   `;
@@ -128,11 +127,11 @@ export async function sendNewsletter(postSlug, recipientEmails = null) {
     }
 
     // Default recipient (you)
-    const recipients = recipientEmails || ["adusingi@protonmail.com"];
+    const recipients = recipientEmails || ["adusingi@mobayilo.com"];
     
     const emailData = {
       from: {
-        address: "noreply@adusingi.com",
+        address: "noreply@mobayilo.com",
         name: "Aimable Dusingizimana"
       },
       to: recipients.map(email => ({
