@@ -14,7 +14,8 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         'ai-1on1': resolve(__dirname, 'ai-1on1.html'),
         blog: resolve(__dirname, 'blog.html'),
-        post: resolve(__dirname, 'post.html')
+        post: resolve(__dirname, 'post.html'),
+        v2: resolve(__dirname, 'v2.html')
       }
     }
   }
