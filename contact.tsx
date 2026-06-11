@@ -1,54 +1,12 @@
 // Import Styles and Fonts
 import './style.css';
-import '@fontsource/cormorant-garamond/400.css';
-import '@fontsource/noto-serif-jp/400.css';
-import '@fontsource/noto-serif-jp/500.css';
-import '@fontsource/noto-serif-jp/600.css';
-import '@fontsource/noto-serif-jp/700.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
-import '@fontsource/cormorant-garamond/500.css';
-import '@fontsource/cormorant-garamond/600.css';
-import '@fontsource/cormorant-garamond/700.css';
 import '@fontsource/inconsolata/400.css';
 import '@fontsource/inconsolata/500.css';
 import '@fontsource/inconsolata/600.css';
 import '@fontsource/inconsolata/700.css';
-
-// Import Lucide Icons
-import {
-  createIcons,
-  Menu,
-  MessageSquare,
-  Map,
-  Calendar,
-  ArrowRight,
-  ArrowLeft,
-  Twitter,
-  Linkedin,
-  Mail
-} from 'lucide';
-
-// Import Shared Logic
-import { setupMobileMenu } from './src/lib/ui';
-
-// Initialize Icons
-createIcons({
-  icons: {
-    Menu,
-    MessageSquare,
-    Map,
-    Calendar,
-    ArrowRight,
-    ArrowLeft,
-    Twitter,
-    Linkedin,
-    Mail
-  }
-});
+import '@fontsource/noto-serif-jp/400.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-  setupMobileMenu();
-
   // --- Contact Form Toggle ---
   const contactForms = document.querySelectorAll('.contact-form');
   const contactCards = document.querySelectorAll('a[href^="#"]');

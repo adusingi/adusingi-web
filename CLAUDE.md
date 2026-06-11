@@ -154,12 +154,18 @@ Markdown content here...
 
 ## Deployment
 
-Configured for **Vercel** with URL rewrites for clean blog URLs (see [vercel.json](vercel.json)):
+Deployed on **Dokploy** as a Docker container (see [Dockerfile](Dockerfile) and [docs/DOKPLOY.md](docs/DOKPLOY.md)).
+[server/index.ts](server/index.ts) is an Express server that serves `dist/` with clean blog URL rewrites
+and hosts the newsletter API at `/api/subscribe` (port 3000, health check at `/health`).
+Requires `RESEND_API_KEY` (and optional `ALLOWED_ORIGIN`) env vars.
 
 ```bash
-vercel          # Deploy preview
-vercel --prod   # Deploy production
+pnpm build      # Build into dist/
+pnpm start      # Run production server locally on :3000
 ```
+
+Legacy Vercel config ([vercel.json](vercel.json), [api/subscribe.ts](api/subscribe.ts)) is kept;
+the API handler is reused by the Express server.
 
 Build process: `pnpm run build:posts && tsc && vite build`
 Output directory: `dist/`

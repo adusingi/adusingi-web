@@ -5,6 +5,10 @@
   --font-sans: 'Inconsolata', monospace;
   --font-serif: 'Cormorant Garamond', serif;
 
+  --color-paper: #faf8f3;
+  --color-ink: #1a1a1a;
+  --color-accent: #b45309;
+
   --color-stone-50: #f3f4f6;
   --color-slate-200: #e2e8f0;
   --color-slate-700: #1F2937;

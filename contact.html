@@ -34,213 +34,149 @@
   <meta name="twitter:image:alt" content="Contact Aimable Dusingizimana">
 </head>
 
-<body class="bg-stone-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-paper text-ink antialiased font-sans selection:bg-ink selection:text-paper">
 
-  <!-- Navbar -->
-  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 bg-white/90 backdrop-blur-md shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 md:px-8 flex justify-between items-center">
-      <a href="/" class="font-serif font-semibold tracking-tight text-navy leading-tight">
-        <span class="text-2xl">Aimable DUSINGIZIMANA</span><br />
-        <span class="text-navy/60 italic text-xs font-normal">Dusingize: Praise · Imana: God</span>
-      </a>
+  <div class="max-w-3xl mx-auto px-5 md:px-8">
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/#projects"
-          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Projects</a>
-        <a href="/#interests"
-          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Interests</a>
-        <a href="/#experience"
-          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Experience</a>
-        <a href="/ai-1on1.html"
-          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">AI 1-on-1</a>
-        <a href="/blog.html"
-          class="font-serif text-base font-medium text-navy hover:text-navy/70 transition-colors">Blog</a>
-        <a href="/contact.html"
-          class="px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
-          in Touch</a>
-      </div>
+    <!-- Header -->
+    <header class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pt-8 pb-6 border-b border-ink/15">
+      <a href="/" class="font-semibold tracking-tight">adusingi<span class="text-accent">.com</span></a>
+      <nav class="flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink/70">
+        <a href="/#projects" class="hover:text-ink hover:underline underline-offset-4">projects</a>
+        <a href="/#interests" class="hover:text-ink hover:underline underline-offset-4">interests</a>
+        <a href="/#experience" class="hover:text-ink hover:underline underline-offset-4">experience</a>
+        <a href="/ai-1on1.html" class="hover:text-ink hover:underline underline-offset-4">ai 1-on-1</a>
+        <a href="/blog.html" class="hover:text-ink hover:underline underline-offset-4">blog</a>
+        <a href="/contact.html" class="font-bold text-ink underline underline-offset-4">get in touch</a>
+      </nav>
+    </header>
 
-      <!-- Mobile Toggle -->
-      <button id="menu-btn" class="md:hidden text-navy p-2" aria-label="Toggle menu">
-        <i data-lucide="menu" class="w-6 h-6"></i>
-      </button>
-    </div>
+    <main>
+      <!-- Intro -->
+      <section class="py-16 md:py-20">
+        <p class="text-xs tracking-[0.25em] uppercase text-ink/50 mb-6">Contact</p>
+        <h1 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-6">
+          Choose how you'd like to contact me.
+        </h1>
+        <p class="max-w-xl leading-relaxed text-ink/70 text-sm">
+          Select the option that best fits your inquiry and I'll get back to you as soon as possible.
+        </p>
+      </section>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu"
-      class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 shadow-lg py-4 px-4 flex-col space-y-4">
-      <a href="/#projects"
-        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Projects</a>
-      <a href="/#interests"
-        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Interests</a>
-      <a href="/#experience"
-        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Experience</a>
-      <a href="/ai-1on1.html" class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">AI
-        1-on-1</a>
-      <a href="/blog.html"
-        class="mobile-link font-serif text-base font-medium text-navy hover:text-navy/70 block">Blog</a>
-      <div class="flex justify-center mt-2">
-        <a href="/contact.html"
-          class="mobile-link inline-block px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">Get
-          in Touch</a>
-      </div>
-    </div>
-  </nav>
+      <!-- Contact Options -->
+      <section class="pb-8">
+        <div class="border-t border-ink/15">
 
-  <main>
-    <!-- Contact Section -->
-    <section class="min-h-screen pt-32 pb-24">
-      <div class="max-w-5xl mx-auto px-4 md:px-8">
-
-        <!-- Header -->
-        <div class="text-center mb-16">
-          <h1 class="text-4xl md:text-5xl font-serif font-medium text-slate-900 mb-4">
-            Choose how you'd like to contact me
-          </h1>
-          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-            Select the option that best fits your inquiry and I'll get back to you as soon as possible.
-          </p>
-        </div>
-
-        <!-- Contact Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- Card 1: General Inquiry -->
+          <!-- Option 1: General Inquiry -->
           <a href="#general-inquiry-form"
-            class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
-            <div class="w-12 h-12 text-slate-700 mb-6">
-              <i data-lucide="message-square" class="w-10 h-10"></i>
+            class="group block py-6 border-b border-ink/15 hover:bg-ink/[0.03] transition-colors -mx-3 px-3">
+            <div class="flex items-baseline justify-between gap-4 mb-2">
+              <h2 class="text-lg font-bold group-hover:text-accent transition-colors">General Inquiry
+                <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+              </h2>
+              <span class="text-xs text-ink/50 shrink-0">hello</span>
             </div>
-            <h2 class="text-xl font-serif font-bold text-slate-900 mb-3">General Inquiry</h2>
-            <p class="text-sm text-slate-600 leading-relaxed flex-grow mb-6">
-              Have questions about Japan, Tai-Chi (太極拳) classes, or just want to say hello? I'm here to help!
+            <p class="text-sm leading-relaxed text-ink/70 max-w-xl">
+              Have questions about Japan, Tai-Chi (<span class="font-jp">太極拳</span>) classes, or just want to say
+              hello? I'm here to help.
             </p>
-            <div class="text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </div>
           </a>
 
-          <!-- Card 2: Travel Planner -->
+          <!-- Option 2: Travel Planner -->
           <a href="#travel-planner-form"
-            class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
-            <div class="w-12 h-12 text-slate-700 mb-6">
-              <i data-lucide="map" class="w-10 h-10"></i>
+            class="group block py-6 border-b border-ink/15 hover:bg-ink/[0.03] transition-colors -mx-3 px-3">
+            <div class="flex items-baseline justify-between gap-4 mb-2">
+              <h2 class="text-lg font-bold group-hover:text-accent transition-colors">Travel Planner
+                <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+              </h2>
+              <span class="text-xs text-ink/50 shrink-0">travel · japan</span>
             </div>
-            <h2 class="text-xl font-serif font-bold text-slate-900 mb-3">Travel Planner</h2>
-            <p class="text-sm text-slate-600 leading-relaxed flex-grow mb-6">
+            <p class="text-sm leading-relaxed text-ink/70 max-w-xl">
               Questions about my travel planning services or need a travel review for your Japan trip?
             </p>
-            <div class="text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </div>
           </a>
 
-          <!-- Card 3: Team-Building Retreats -->
+          <!-- Option 3: Team-Building Retreats -->
           <a href="#team-building-form"
-            class="group flex flex-col p-8 bg-white border border-slate-200 rounded-2xl hover:border-slate-300 hover:shadow-lg transition-all duration-300">
-            <div class="w-12 h-12 text-slate-700 mb-6">
-              <i data-lucide="calendar" class="w-10 h-10"></i>
+            class="group block py-6 border-b border-ink/15 hover:bg-ink/[0.03] transition-colors -mx-3 px-3">
+            <div class="flex items-baseline justify-between gap-4 mb-2">
+              <h2 class="text-lg font-bold group-hover:text-accent transition-colors">Team-Building Retreats
+                <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+              </h2>
+              <span class="text-xs text-ink/50 shrink-0">teams · japan</span>
             </div>
-            <h2 class="text-xl font-serif font-bold text-slate-900 mb-3">Team-Building Retreats</h2>
-            <p class="text-sm text-slate-600 leading-relaxed flex-grow mb-6">
+            <p class="text-sm leading-relaxed text-ink/70 max-w-xl">
               Would like to organize a team retreat in Japan? Let's discuss your vision and requirements.
             </p>
-            <div class="text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all">
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </div>
           </a>
 
         </div>
+      </section>
 
-        <!-- General Inquiry Form -->
-        <div id="general-inquiry-form" class="contact-form hidden mt-16 scroll-mt-32">
-          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">General Inquiry</h2>
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
-            <iframe
-              data-tally-src="https://tally.so/embed/LZ95ol?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-              loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
-              title="General Inquiry Form">
-            </iframe>
-          </div>
+      <!-- General Inquiry Form -->
+      <div id="general-inquiry-form" class="contact-form hidden pb-16 scroll-mt-8">
+        <h2 class="text-xs tracking-[0.25em] uppercase text-ink/50 mb-2">General Inquiry</h2>
+        <div class="border-t border-ink/15 pt-6">
+          <iframe
+            data-tally-src="https://tally.so/embed/LZ95ol?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+            title="General Inquiry Form">
+          </iframe>
         </div>
-
-        <!-- Travel Planner Form -->
-        <div id="travel-planner-form" class="contact-form hidden mt-16 scroll-mt-32">
-          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">Travel Planner</h2>
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
-            <iframe
-              data-tally-src="https://tally.so/embed/gDaW8d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-              loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
-              title="Travel Planner Form">
-            </iframe>
-          </div>
-        </div>
-
-        <!-- Team-Building Retreats Form -->
-        <div id="team-building-form" class="contact-form hidden mt-16 scroll-mt-32">
-          <h2 class="text-2xl font-serif font-semibold text-slate-900 mb-6 text-center">Team-Building Retreats</h2>
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8">
-            <iframe
-              data-tally-src="https://tally.so/embed/Bza8rA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-              loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
-              title="Team-Building Retreats Form">
-            </iframe>
-          </div>
-        </div>
-
-        <!-- Tally Embed Script -->
-        <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s) }</script>
-
-        <!-- Back to Home -->
-        <div class="text-center mt-16">
-          <a href="/"
-            class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            Back to Home
-          </a>
-        </div>
-
       </div>
-    </section>
-  </main>
 
-  <!-- Let's Connect Section -->
-  <section class="py-20 bg-navy">
-    <div class="max-w-3xl mx-auto px-4 md:px-8 text-center">
-      <h2 class="text-2xl md:text-3xl font-serif text-white mb-4">Let's Connect</h2>
-      <p class="text-slate-300 max-w-xl mx-auto">
-        Whether you want to discuss a project, talk about Tai-Chi (太極拳), or need advice for your next trip to Japan,
-        feel free to reach out.
+      <!-- Travel Planner Form -->
+      <div id="travel-planner-form" class="contact-form hidden pb-16 scroll-mt-8">
+        <h2 class="text-xs tracking-[0.25em] uppercase text-ink/50 mb-2">Travel Planner</h2>
+        <div class="border-t border-ink/15 pt-6">
+          <iframe
+            data-tally-src="https://tally.so/embed/gDaW8d?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+            title="Travel Planner Form">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Team-Building Retreats Form -->
+      <div id="team-building-form" class="contact-form hidden pb-16 scroll-mt-8">
+        <h2 class="text-xs tracking-[0.25em] uppercase text-ink/50 mb-2">Team-Building Retreats</h2>
+        <div class="border-t border-ink/15 pt-6">
+          <iframe
+            data-tally-src="https://tally.so/embed/Bza8rA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+            title="Team-Building Retreats Form">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Tally Embed Script -->
+      <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s) }</script>
+
+      <!-- Back to Home -->
+      <section class="pb-16">
+        <a href="/" class="text-sm text-ink/60 hover:text-ink underline underline-offset-4">
+          ← back to home
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-ink/15 py-12 mb-8">
+      <p class="max-w-xl text-sm leading-relaxed text-ink/70 mb-8">
+        Whether you want to discuss a project, talk about Tai-Chi (<span class="font-jp">太極拳</span>), or need advice
+        for your next trip to Japan, feel free to reach out.
       </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-navy text-slate-300 py-10 border-t border-white/20">
-    <div class="max-w-6xl mx-auto px-4 md:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <p class="text-sm text-white">&copy; 2025 Aimable Dusingizimana. Based in Okayama, Japan.</p>
-
-        <div class="flex space-x-6">
-          <a href="https://x.com/Adusingi" target="_blank" rel="noopener noreferrer"
-            class="hover:text-white transition-colors">
-            <i data-lucide="twitter" class="w-5 h-5"></i>
-            <span class="sr-only">X (Twitter)</span>
-          </a>
-          <a href="https://www.linkedin.com/in/aimable-dusingizimana-1929461" target="_blank" rel="noopener noreferrer"
-            class="hover:text-white transition-colors">
-            <i data-lucide="linkedin" class="w-5 h-5"></i>
-            <span class="sr-only">LinkedIn</span>
-          </a>
-          <a href="/contact.html" class="hover:text-white transition-colors">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-            <span class="sr-only">Contact</span>
-          </a>
-        </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-8">
+        <a href="https://x.com/Adusingi" target="_blank" rel="noopener noreferrer"
+          class="text-ink/60 hover:text-ink underline underline-offset-4">x/twitter</a>
+        <a href="https://www.linkedin.com/in/aimable-dusingizimana-1929461" target="_blank" rel="noopener noreferrer"
+          class="text-ink/60 hover:text-ink underline underline-offset-4">linkedin</a>
       </div>
-    </div>
-  </footer>
+      <p class="text-xs text-ink/40">&copy; 2026 Aimable Dusingizimana · Okayama, Japan ·
+        <span class="font-jp">手を動かして作る</span> — built by hand.</p>
+    </footer>
+
+  </div>
 
   <!-- Load Main Script -->
   <script type="module" src="./contact.tsx"></script>
