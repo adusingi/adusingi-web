@@ -6,4 +6,20 @@ import '@fontsource/inconsolata/600.css';
 import '@fontsource/inconsolata/700.css';
 import '@fontsource/noto-serif-jp/400.css';
 
-// No icons, no animations — the design is intentionally static and dependency-free.
+// Live clock for Okayama (Asia/Tokyo) shown in the intro
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('japan-time');
+  if (!el) return;
+
+  const update = () => {
+    el.textContent = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Tokyo',
+    }).format(new Date());
+  };
+
+  update();
+  setInterval(update, 30_000);
+});
