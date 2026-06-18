@@ -1,6 +1,11 @@
 # Adusingi Portfolio
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Personal portfolio website for Aimable Dusingizimana - Project Manager & Builder based in Okayama, Japan.
+
+The source is open under the [MIT License](#license). Feel free to read it, learn from it, or reuse
+the structure for your own site — just please swap out the personal content (name, projects, copy, and images).
 
 ## Tech Stack
 
@@ -90,17 +95,24 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 
 ## Deployment
 
-The project is configured for deployment on Vercel:
+The site is deployed on **Dokploy** as a Docker container. [`server/index.ts`](server/index.ts) is an
+Express server that serves the built `dist/` with clean blog URL rewrites and hosts the newsletter API at
+`/api/subscribe` (port 3000, health check at `/health`). It requires a `RESEND_API_KEY` (and optional
+`ALLOWED_ORIGIN`) environment variable. See [docs/DOKPLOY.md](docs/DOKPLOY.md) for details.
 
 ```bash
-# Deploy to Vercel
-vercel
+# Build into dist/
+pnpm build
 
-# Deploy to production
-vercel --prod
+# Run the production server locally on :3000
+pnpm start
 ```
 
-The build process runs TypeScript type checking followed by Vite build, outputting to the `dist` directory.
+The build process generates blog posts, runs TypeScript type checking, then runs the Vite build,
+outputting to the `dist/` directory.
+
+> Legacy Vercel config ([vercel.json](vercel.json), [api/subscribe.ts](api/subscribe.ts)) is kept and the
+> API handler is reused by the Express server.
 
 ## Features
 
@@ -185,4 +197,8 @@ pnpm run newsletter:send my-post-slug
 
 ## License
 
-© 2025 Aimable Dusingizimana. All rights reserved.
+This project is licensed under the [MIT License](LICENSE) — © 2026 Aimable Dusingizimana.
+
+The MIT License covers the source code. Personal content (written copy, project descriptions, and any
+images or branding for Aimable Dusingizimana) is not licensed for reuse — please replace it with your own
+if you build on this.
