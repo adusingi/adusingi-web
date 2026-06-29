@@ -1,5 +1,29 @@
 [
   {
+    "src": "/photos/ushimado-sunrise.jpg",
+    "caption": "Pink dawn over the paddies",
+    "place": "Ushimado, JP",
+    "alt": "Flooded rice paddies reflecting a pink and orange sunrise sky"
+  },
+  {
+    "src": "/photos/ushimado.jpg",
+    "caption": "Quiet morning at the harbour",
+    "place": "Ushimado, JP",
+    "alt": "A fishing boat moored on calm water under a clear blue sky"
+  },
+  {
+    "src": "/photos/taichi-master.jpg",
+    "caption": "The Tai-Chi master — no effort, no resistance, be water",
+    "place": "Ushimado, JP",
+    "alt": "Moon jellyfish drifting effortlessly through green harbour water, flowing without resistance"
+  },
+  {
+    "src": "/photos/roots.jpg",
+    "caption": "A tree wrapped in its own roots",
+    "place": "Okayama, JP",
+    "alt": "Gnarled aerial roots winding down a thick tree trunk among green leaves"
+  },
+  {
     "src": "/photos/lions-head-meadow.jpg",
     "caption": "Lion's Head from the meadow",
     "place": "Cape Town, ZA",
