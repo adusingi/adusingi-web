@@ -27,3 +27,6 @@ dist-ssr
 .vercel
 .env
 .env*.local
+
+# Photo originals (preserved locally, not served/committed)
+photos-originals/

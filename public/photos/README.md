@@ -41,6 +41,6 @@ Save, refresh `/photography`, and the photo appears.
 
 ## Note
 
-The four entries currently in `photos.json` use `picsum.photos` placeholder URLs so the
-page renders out of the box. **Delete them and add your own** — they require internet to
-load and are not real photos.
+Drop full-size originals anywhere outside `public/` (the repo keeps yours in the
+gitignored `photos-originals/`). The files committed here are already resized to ~1600px
+and compressed for the web.
