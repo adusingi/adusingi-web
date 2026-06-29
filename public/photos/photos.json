@@ -1,0 +1,22 @@
+[
+  {
+    "src": "https://picsum.photos/seed/rice-terrace/900/900",
+    "caption": "Morning over the rice terraces",
+    "place": "Okayama, JP"
+  },
+  {
+    "src": "https://picsum.photos/seed/kigali-hills/900/900",
+    "caption": "A thousand hills at dusk",
+    "place": "Kigali, RW"
+  },
+  {
+    "src": "https://picsum.photos/seed/tea-house/900/900",
+    "caption": "Old tea house, side street",
+    "place": "Kyoto, JP"
+  },
+  {
+    "src": "https://picsum.photos/seed/lake-kivu/900/900",
+    "caption": "Still water, Lake Kivu",
+    "place": "Karongi, RW"
+  }
+]

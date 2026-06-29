@@ -29,6 +29,7 @@ app.get('/health', (_req, res) => {
 // Clean URL rewrites (mirrors vercel.json)
 app.get('/contact', (_req, res) => res.sendFile(resolve(distDir, 'contact.html')));
 app.get('/ai-1on1', (_req, res) => res.sendFile(resolve(distDir, 'ai-1on1.html')));
+app.get('/photography', (_req, res) => res.sendFile(resolve(distDir, 'photography.html')));
 app.get('/blog', (_req, res) => res.sendFile(resolve(distDir, 'blog.html')));
 app.get('/blog/:slug', (_req, res) => res.sendFile(resolve(distDir, 'post.html')));
 
