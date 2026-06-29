@@ -1,0 +1,50 @@
+[
+  {
+    "src": "/photos/lions-head-meadow.jpg",
+    "caption": "Lion's Head from the meadow",
+    "place": "Cape Town, ZA",
+    "alt": "Lion's Head peak rising over a dry grass meadow under clear blue sky"
+  },
+  {
+    "src": "/photos/table-mountain-tablecloth.jpg",
+    "caption": "The tablecloth catching gold",
+    "place": "Cape Town, ZA",
+    "alt": "Cloud spilling over Table Mountain, lit gold along its edge at dusk"
+  },
+  {
+    "src": "/photos/simons-town-boats.jpg",
+    "caption": "Painted boats at rest",
+    "place": "Simon's Town, ZA",
+    "alt": "Colourful wooden fishing boats moored in a calm harbour"
+  },
+  {
+    "src": "/photos/cape-point-balancing-rock.jpg",
+    "caption": "Balancing rock above the Atlantic",
+    "place": "Cape of Good Hope, ZA",
+    "alt": "A large flat boulder balanced on the cliffs over the deep blue ocean"
+  },
+  {
+    "src": "/photos/cape-of-good-hope-swell.jpg",
+    "caption": "Swell rolling into the Cape",
+    "place": "Cape of Good Hope, ZA",
+    "alt": "Lines of waves breaking onto a rocky shore beneath a hazy horizon"
+  },
+  {
+    "src": "/photos/drakensberg-escarpment.jpg",
+    "caption": "The escarpment opens to the valley",
+    "place": "Drakensberg, ZA",
+    "alt": "Green Drakensberg cliffs and ridges dropping away to a wide hazy valley"
+  },
+  {
+    "src": "/photos/drakensberg-blue-peaks.jpg",
+    "caption": "Blue light on the berg",
+    "place": "Drakensberg, ZA",
+    "alt": "Layered Drakensberg peaks fading into blue haze and low cloud"
+  },
+  {
+    "src": "/photos/drakensberg-sunset.jpg",
+    "caption": "Sun going down over the ranges",
+    "place": "Drakensberg, ZA",
+    "alt": "A deep red sun setting through orange cloud over silhouetted mountain ranges"
+  }
+]

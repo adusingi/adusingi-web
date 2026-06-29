@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography | Aimable Dusingizimana</title>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="229fddfb-58f9-4ef5-827a-fa74bebf2d8a"></script>
+  <meta name="description"
+    content="Photography by Aimable Dusingizimana — frames from rural Japan and the hills of Rwanda.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.adusingi.com/photography">
+  <meta property="og:site_name" content="Aimable Dusingizimana">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Photography | Aimable Dusingizimana">
+  <meta property="og:description"
+    content="Frames from rural Japan and the hills of Rwanda.">
+  <meta property="og:image" content="https://www.adusingi.com/og-image.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Adusingi">
+  <meta name="twitter:creator" content="@Adusingi">
+  <meta name="twitter:title" content="Photography | Aimable Dusingizimana">
+  <meta name="twitter:description" content="Frames from rural Japan and the hills of Rwanda.">
+  <meta name="twitter:image" content="https://www.adusingi.com/og-image.jpeg">
+</head>
+
+<body class="bg-paper text-ink antialiased font-sans selection:bg-ink selection:text-paper">
+
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-40 bg-paper/90 backdrop-blur-sm flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pt-6 pb-4 border-b border-ink/15">
+      <a href="/" class="font-semibold tracking-tight">adusingi<span class="text-accent">.com</span></a>
+      <nav class="flex flex-wrap items-baseline gap-x-5 gap-y-1 text-sm text-ink/70">
+        <a href="/#projects" class="hover:text-ink hover:underline underline-offset-4">projects</a>
+        <a href="/#interests" class="hover:text-ink hover:underline underline-offset-4">interests</a>
+        <a href="/photography.html" class="text-ink underline underline-offset-4 decoration-accent">photography</a>
+        <a href="/ai-1on1.html" class="hover:text-ink hover:underline underline-offset-4">ai 1-on-1</a>
+        <a href="/blog.html" class="hover:text-ink hover:underline underline-offset-4">blog</a>
+        <a href="/contact.html"
+          class="px-3 py-1.5 bg-ink text-paper font-bold hover:bg-accent transition-colors">get in touch</a>
+      </nav>
+    </header>
+
+    <!-- Intro -->
+    <section class="py-12 md:py-16">
+      <h1 class="text-xs tracking-[0.25em] uppercase text-ink/50 mb-3">Photography</h1>
+      <p class="max-w-xl text-sm md:text-base leading-relaxed text-ink/70">
+        Experimentation and sharing.
+      </p>
+    </section>
+
+    <!-- Gallery grid (populated by photography.tsx) -->
+    <main class="pb-16 md:pb-24">
+      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1.5"></div>
+      <p id="photo-empty" class="hidden text-sm text-ink/50 py-12">No photos yet — check back soon.</p>
+    </main>
+
+  </div>
+
+  <!-- Full-screen lightbox slider -->
+  <div id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/95 p-6 select-none" aria-modal="true" role="dialog">
+    <button id="lightbox-close"
+      class="absolute top-5 right-6 text-paper/70 hover:text-paper text-4xl leading-none" aria-label="Close">&times;</button>
+    <button id="lightbox-prev"
+      class="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 text-paper/60 hover:text-paper text-5xl leading-none px-2" aria-label="Previous">&#8249;</button>
+    <button id="lightbox-next"
+      class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 text-paper/60 hover:text-paper text-5xl leading-none px-2" aria-label="Next">&#8250;</button>
+    <figure class="max-w-5xl w-full text-center">
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] w-auto mx-auto" />
+      <figcaption class="mt-4 flex items-center justify-center gap-3 text-paper">
+        <span id="lightbox-count" class="text-[11px] font-mono text-paper/60"></span>
+        <span id="lightbox-cap" class="font-serif text-xl"></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <script type="module" src="./photography.tsx"></script>
+</body>
+
+</html>

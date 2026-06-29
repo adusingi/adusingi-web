@@ -6,6 +6,7 @@
   "framework": "vite",
   "rewrites": [
     { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/photography", "destination": "/photography.html" },
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/blog/:slug", "destination": "/post.html" }
   ]
