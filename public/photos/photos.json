@@ -1,5 +1,41 @@
 [
   {
+    "src": "/photos/ushimado-sunrise-5am.jpg",
+    "caption": "Five in the morning, the sea catches fire",
+    "place": "Ushimado, JP",
+    "alt": "A brilliant white sun rising over the sea beneath a deep red sky, mountains in silhouette"
+  },
+  {
+    "src": "/photos/ushimado-shinto-shrine.jpg",
+    "caption": "Stone torii facing the sea at first light",
+    "place": "Ushimado, JP",
+    "alt": "A stone torii gate standing by the shore at dawn, beside a low stone wall and a small wooden shelter"
+  },
+  {
+    "src": "/photos/o-fuku-encounter.jpg",
+    "caption": "An encounter with good fortune — 招福",
+    "place": "Okayama, JP",
+    "alt": "A small black lucky-cat bell charm inscribed with the characters for inviting fortune, hanging against a blurred sunlit country road"
+  },
+  {
+    "src": "/photos/dream-house-peace.jpg",
+    "caption": "The dream house, at peace in the rain",
+    "place": "Okayama, JP",
+    "alt": "A traditional tiled-roof Japanese farmhouse behind a garden of sculpted pines, maples and a palm, under soft rain"
+  },
+  {
+    "src": "/photos/nature-in-display.jpg",
+    "caption": "Nature in display",
+    "place": "Okayama, JP",
+    "alt": "A dandelion seed head in close-up, its white filaments glowing against green grass"
+  },
+  {
+    "src": "/photos/ushimado-sunset.jpg",
+    "caption": "Evening gold over the harbour",
+    "place": "Ushimado, JP",
+    "alt": "The sun setting over a calm harbour, clouds and still water glowing gold"
+  },
+  {
     "src": "/photos/ushimado-sunrise.jpg",
     "caption": "Pink dawn over the paddies",
     "place": "Ushimado, JP",
