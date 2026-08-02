@@ -64,7 +64,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show error message
     expect(message.textContent).toBe('Please enter your email address')
-    expect(message.className).toContain('text-red-600')
+    expect(message.className).toContain('text-error')
     expect(message.classList.contains('hidden')).toBe(false)
   })
 
@@ -81,7 +81,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show error message
     expect(message.textContent).toBe('Please enter a valid email address')
-    expect(message.className).toContain('text-red-600')
+    expect(message.className).toContain('text-error')
     expect(message.classList.contains('hidden')).toBe(false)
   })
 
@@ -135,7 +135,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show success message
     expect(message.textContent).toBe('🎉 Thanks for subscribing! Check your email.')
-    expect(message.className).toContain('text-green-600')
+    expect(message.className).toContain('text-success')
     expect(message.classList.contains('hidden')).toBe(false)
 
     // Should clear input
@@ -169,7 +169,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show error message
     expect(message.textContent).toBe('Email already subscribed')
-    expect(message.className).toContain('text-red-600')
+    expect(message.className).toContain('text-error')
     expect(message.classList.contains('hidden')).toBe(false)
 
     // Should re-enable button
@@ -197,7 +197,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show network error message
     expect(message.textContent).toBe('Network error. Please try again later.')
-    expect(message.className).toContain('text-red-600')
+    expect(message.className).toContain('text-error')
     expect(message.classList.contains('hidden')).toBe(false)
 
     // Should re-enable button
@@ -227,7 +227,7 @@ describe('Newsletter Form Validation', () => {
 
     // Should show 404 message
     expect(message.textContent).toBe('API not available in local dev. Deploy to Vercel or use "vercel dev".')
-    expect(message.className).toContain('text-red-600')
+    expect(message.className).toContain('text-error')
     expect(message.classList.contains('hidden')).toBe(false)
   })
 

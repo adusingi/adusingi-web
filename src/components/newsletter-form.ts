@@ -69,8 +69,8 @@ export function initNewsletterForm() {
   function showMessage(text: string, type: 'success' | 'error') {
     message.textContent = text;
     message.className = type === 'success'
-      ? 'text-green-600 text-sm mt-3 text-center'
-      : 'text-red-600 text-sm mt-3 text-center';
+      ? 'text-success text-sm mt-3 text-center'
+      : 'text-error text-sm mt-3 text-center';
   }
 
   function isValidEmail(email: string): boolean {
