@@ -3,12 +3,20 @@
 # Fetch commits from a running Claude sandbox and inspect them locally,
 # without touching the real `development` branch.
 #
-# Usage: ./scripts/verify-sandbox.sh <sandbox-name> [branch-to-check]
-#   sandbox-name    Name passed to `sbx create --name <sandbox-name> ...`
+# Usage: verify-sandbox.sh <sandbox-name> [branch-to-check]
+#   sandbox-name    Name passed to `sbx create --clone --name <sandbox-name> ...`
 #   branch-to-check Branch on the sandbox to pull from (default: development)
 #
+# Create the sandbox with --clone. That flag makes the agent work on a private
+# in-container clone and gives the host a `sandbox-<name>` git remote, which is
+# what this script fetches from. Without --clone there is no remote to fetch:
+#
+#   sbx create --clone --name updated-project claude .
+#   sbx run --name updated-project
+#   ./scripts/verify-sandbox.sh updated-project
+#
 # Run this from your Macbook (not inside the sandbox) while the sandbox
-# is still up, since it depends on the sandbox's git-daemon remote.
+# is still up, since the git-daemon remote dies with the sandbox.
 
 set -euo pipefail
 
@@ -24,7 +32,14 @@ fi
 
 if ! git remote get-url "$REMOTE" >/dev/null 2>&1; then
   echo "Error: git remote '$REMOTE' not found." >&2
-  echo "Is the sandbox '$SANDBOX_NAME' still running? Check with: sbx run --name $SANDBOX_NAME" >&2
+  echo "Two things create it: the sandbox must be running, and it must have been" >&2
+  echo "created with --clone (sbx create --clone --name $SANDBOX_NAME claude .)." >&2
+  echo "List your sandboxes with: sbx ls" >&2
+  AVAILABLE="$(git remote | grep '^sandbox-' || true)"
+  if [ -n "$AVAILABLE" ]; then
+    echo "Sandbox remotes this repo already knows about:" >&2
+    echo "$AVAILABLE" | sed 's/^sandbox-/  /' >&2
+  fi
   exit 1
 fi
 
