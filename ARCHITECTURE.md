@@ -1,8 +1,15 @@
+---
+type: Architecture
+title: Adusingi Portfolio — Architecture
+description: Structure, components, data stores, and deployment of the adusingi-web portfolio site.
+timestamp: 2026-08-16T02:06:00+09:00
+---
+
 # Adusingi Portfolio — Architecture
 
 > **Project:** Personal portfolio website for Aimable Dusingizimana (Adusingi) — Project Manager & Builder based in Okayama, Japan.  
 > **Repository:** https://github.com/adusingi/adusingi-web.git  
-> **Last Updated:** 2026-06-11
+> **Last Updated:** 2026-08-16
 
 ---
 
@@ -20,6 +27,8 @@ adusingi-web/
 ├── contact.tsx                 # Contact page JS entry (form toggle, hash routing)
 ├── ai-1on1.html                # AI 1-on-1 service page
 ├── ai-1on1.tsx                 # AI 1on1 page JS entry
+├── photography.html            # Photography gallery page
+├── photography.tsx             # Gallery JS entry (contact-sheet grid + lightbox slider)
 ├── style.css                   # Tailwind CSS 4 + custom reveal animations
 ├── vite.config.ts              # Vite build configuration (multi-page input)
 ├── vercel.json                 # Vercel deployment config + URL rewrites
@@ -74,6 +83,10 @@ adusingi-web/
 │   │   ├── posts-all.json      # All post summaries for client-side tag filtering (generated)
 │   │   └── posts/              # Individual post JSON files (generated)
 │   │       └── *.json
+│   ├── photos/                 # Gallery images + hand-written manifest
+│   │   ├── photos.json         # Photo manifest (newest first) — see photos/README.md
+│   │   ├── README.md           # How to add a photo (resize, compress, add entry)
+│   │   └── *.jpg               # Web-sized images (~1600px long edge, < 500 KB)
 │   └── og-image.jpeg           # Open Graph default image
 │
 ├── tests/                      # Comprehensive test suite (Vitest + jsdom)
@@ -116,6 +129,7 @@ graph TD
         P3[post.html]
         P4[contact.html]
         P5[ai-1on1.html]
+        P6[photography.html]
         JS[index.tsx / blog.tsx / post.tsx]
         CSS[style.css — Tailwind CSS 4]
     end
@@ -140,6 +154,7 @@ graph TD
     P3 -->|loads post data| PD
     P4 -->|embeds| T
     P1 -->|modal video| Y
+    P6 -->|fetches manifest| PH[(public/photos/photos.json)]
 ```
 
 **Request / Data Flow:**
@@ -162,6 +177,7 @@ graph TD
   - `post.tsx` — Post detail (dynamic slug resolution, meta tag injection, post content rendering)
   - `contact.tsx` — Contact page (hash-based form toggling, Tally embed orchestration)
   - `ai-1on1.tsx` — AI 1-on-1 service page
+  - `photography.tsx` — Photography gallery (grid render from manifest, lightbox with keyboard nav)
 - **Deployment:** Static files built by Vite, deployed to Vercel (`dist/` output directory)
 
 ### 3.2 Blog Build System
@@ -201,6 +217,7 @@ graph TD
 | Post Summaries | JSON files in `public/data/` | Paginated listing data | `PaginatedResponse`: `{ posts: PostSummary[], pagination: { current, total, hasNext } }` |
 | Rate Limit Store | In-memory `Map` (serverless warm instance) | Newsletter subscription rate limiting | `Map<string, { count, resetTime }>` — resets on cold start |
 | Newsletter Contacts | Resend (external) | Email list / audience management | Managed via Resend Contacts API |
+| Photo Manifest | `public/photos/photos.json` (hand-written) | Gallery contents, newest first | `Photo[]`: `{ src, caption, place, alt? }` — interim source until the planned admin upload (Minio + Postgres) |
 
 > **No persistent database** is used in this project. All data is either static files or managed by external services (Resend).
 
