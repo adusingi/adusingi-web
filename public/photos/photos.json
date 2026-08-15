@@ -1,5 +1,29 @@
 [
   {
+    "src": "/photos/adachi-dry-landscape.jpg",
+    "caption": "The dry landscape garden, hills borrowed from behind",
+    "place": "Adachi Museum, JP",
+    "alt": "A dry landscape garden of raked white gravel, clipped green mounds and standing stones, with wooded hills rising behind"
+  },
+  {
+    "src": "/photos/adachi-raked-gravel.jpg",
+    "caption": "Moss mounds along the white gravel",
+    "place": "Adachi Museum, JP",
+    "alt": "Rounded clipped shrubs and dark rocks set along a wide field of white gravel, pines and a stone pagoda on the wooded slope behind"
+  },
+  {
+    "src": "/photos/adachi-kikaku-falls.jpg",
+    "caption": "A waterfall seen through the window glass",
+    "place": "Adachi Museum, JP",
+    "alt": "A small waterfall falling into the garden below a tiled-roof arbour and a stone pagoda, framed by pines and seen through museum glass"
+  },
+  {
+    "src": "/photos/adachi-white-gravel-pine.jpg",
+    "caption": "White gravel, green pine, blue mountains",
+    "place": "Adachi Museum, JP",
+    "alt": "A curved lawn beside a wide sweep of white gravel among sculpted pines and rocks, with blue hills in the distance"
+  },
+  {
     "src": "/photos/ushimado-sunrise-5am.jpg",
     "caption": "Five in the morning, the sea catches fire",
     "place": "Ushimado, JP",
