@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "become-a-web3-developer-with-ethereum-blockchain",
+      "title": "Become a Web3 Developer with Ethereum Blockchain: A Guide to Learning and Getting Hired!",
+      "date": "2022-06-15T00:00:00.000Z",
+      "description": "A curated collection of resources to help you become a blockchain developer, focusing on Ethereum, Solidity, and Web3 job opportunities.",
+      "tags": [
+        "blockchain",
+        "ethereum",
+        "web3",
+        "career",
+        "resources"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "privacy-anonymity-and-surveillance-on-the-blockchain",
       "title": "Privacy, Anonymity and Surveillance on the Blockchain",
       "date": "2017-10-15T00:00:00.000Z",

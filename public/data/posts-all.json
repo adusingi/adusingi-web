@@ -1,5 +1,19 @@
 [
   {
+    "slug": "free-website-with-cloudflare-claude-code",
+    "title": "How to Make a Website for Free with Cloudflare (No Terminal, No Credit Card)",
+    "date": "2026-08-16T00:00:00.000Z",
+    "description": "Part 1 of a new series on getting something real onto the internet: a free, beginner-friendly way to build and publish a website using Claude Code or Codex and Cloudflare.",
+    "tags": [
+      "ai",
+      "web-development",
+      "cloudflare",
+      "beginners",
+      "series"
+    ],
+    "pinned": false
+  },
+  {
     "slug": "ai-web-development-stack",
     "title": "The AI Web Development Stack I Actually use in Production (Not Just Demos)",
     "date": "2026-01-14T00:00:00.000Z",
