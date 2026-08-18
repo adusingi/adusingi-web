@@ -2,14 +2,14 @@
 type: Architecture
 title: Adusingi Portfolio — Architecture
 description: Structure, components, data stores, and deployment of the adusingi-web portfolio site.
-timestamp: 2026-08-16T02:06:00+09:00
+timestamp: 2026-08-18T20:46:08+09:00
 ---
 
 # Adusingi Portfolio — Architecture
 
 > **Project:** Personal portfolio website for Aimable Dusingizimana (Adusingi) — Project Manager & Builder based in Okayama, Japan.  
 > **Repository:** https://github.com/adusingi/adusingi-web.git  
-> **Last Updated:** 2026-08-16
+> **Last Updated:** 2026-08-18
 
 ---
 
@@ -45,6 +45,7 @@ adusingi-web/
 │   ├── components/
 │   │   └── newsletter-form.ts  # Client-side newsletter subscription form handler
 │   ├── lib/
+│   │   ├── photography.ts      # Safe local + Files feed loading, grid, lightbox
 │   │   ├── ui.ts               # Mobile menu & YouTube video modal setup
 │   │   └── utils.ts            # Date formatting, email validation, slug extraction
 │   └── data/
@@ -154,7 +155,8 @@ graph TD
     P3 -->|loads post data| PD
     P4 -->|embeds| T
     P1 -->|modal video| Y
-    P6 -->|fetches manifest| PH[(public/photos/photos.json)]
+    P6 -->|fetches local manifest| PH[(public/photos/photos.json)]
+    P6 -->|fetches tagged publications| FF[files.mobayilo.com/api/portfolio]
 ```
 
 **Request / Data Flow:**
@@ -163,6 +165,9 @@ graph TD
 3. **Client-side JS** fetches post data dynamically (`fetch('/data/posts.json')`) for blog listing and individual post rendering.
 4. **Newsletter subscriptions** hit the Vercel Serverless Function at `/api/subscribe`, which adds contacts to Resend and sends a welcome email.
 5. **Newsletter sends** are triggered manually via CLI scripts (`newsletter/send-post.ts` or `scripts-js/send-newsletter.js`) that call Resend or ZeptoMail APIs.
+6. **Photography** merges complete `#portfolio` entries from Files ahead of
+   the existing local manifest; remote failure falls back to the local
+   collection.
 
 ---
 
@@ -177,7 +182,8 @@ graph TD
   - `post.tsx` — Post detail (dynamic slug resolution, meta tag injection, post content rendering)
   - `contact.tsx` — Contact page (hash-based form toggling, Tally embed orchestration)
   - `ai-1on1.tsx` — AI 1-on-1 service page
-  - `photography.tsx` — Photography gallery (grid render from manifest, lightbox with keyboard nav)
+  - `photography.tsx` — Photography entry point
+  - `src/lib/photography.ts` — Safe feed adapters, flat-grid rendering, local fallback, and lightbox behavior
 - **Deployment:** Static files built by Vite, deployed to Vercel (`dist/` output directory)
 
 ### 3.2 Blog Build System
@@ -217,7 +223,8 @@ graph TD
 | Post Summaries | JSON files in `public/data/` | Paginated listing data | `PaginatedResponse`: `{ posts: PostSummary[], pagination: { current, total, hasNext } }` |
 | Rate Limit Store | In-memory `Map` (serverless warm instance) | Newsletter subscription rate limiting | `Map<string, { count, resetTime }>` — resets on cold start |
 | Newsletter Contacts | Resend (external) | Email list / audience management | Managed via Resend Contacts API |
-| Photo Manifest | `public/photos/photos.json` (hand-written) | Gallery contents, newest first | `Photo[]`: `{ src, caption, place, alt? }` — interim source until the planned admin upload (Minio + Postgres) |
+| Local Photo Manifest | `public/photos/photos.json` (hand-written) | Preserved existing gallery contents, newest first | `Photo[]`: `{ src, caption, place, alt? }` |
+| Files Photography Feed | `files.mobayilo.com` (external) | Complete new `#portfolio` publications, prepended at runtime | `{ photos: [{ src, thumbnailSrc, caption, place, alt, category, publishedAt }] }` |
 
 > **No persistent database** is used in this project. All data is either static files or managed by external services (Resend).
 
@@ -234,6 +241,7 @@ graph TD
 | **Vercel** | Hosting, serverless functions, URL rewrites | Git-based deployment + `vercel.json` config |
 | **GitHub Actions** | CI/CD pipeline | `.github/workflows/test.yml` |
 | **Codecov** | Test coverage reporting | Upload via `codecov/codecov-action@v3` |
+| **files-mobayilo** | Public, read-only feed of explicitly tagged portfolio derivatives | Browser `GET` with local-manifest fallback |
 
 ---
 

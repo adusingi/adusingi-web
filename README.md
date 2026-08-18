@@ -1,3 +1,11 @@
+---
+type: Project Guide
+title: Adusingi Portfolio
+description: Development and operating guide for the adusingi.com multi-page portfolio.
+tags: [portfolio, vite, typescript]
+timestamp: 2026-08-18T20:46:08+09:00
+---
+
 # Adusingi Portfolio
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -80,6 +88,7 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 - **[contact.html](contact.html)** - Contact page with Tally form embeds
 - **[blog.html](blog.html)** - Blog index with tag filtering
 - **[post.html](post.html)** - Individual blog post page
+- **[photography.html](photography.html)** - Flat photography grid backed by local photos plus the Files publication feed
 
 ### Blog System
 - **Markdown posts** in `/posts` directory with YAML frontmatter
@@ -87,6 +96,16 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 - **Static output** - all blog data in `src/data/posts.json`
 - **Tag filtering** - client-side filtering on blog index
 - **SEO-friendly URLs** - Vercel rewrites for clean URLs (`/blog/post-slug`)
+
+### Photography System
+
+- Existing photos remain in `public/photos/photos.json`, newest first.
+- New photos tagged `#portfolio` in Files load from the public
+  `files.mobayilo.com` photography feed before the local collection.
+- If the remote feed is unavailable or malformed, the complete local
+  collection still renders.
+- Grid images use small derivatives while the lightbox uses larger,
+  metadata-stripped display derivatives.
 
 ### Styling
 - **Tailwind CSS 4** via PostCSS build
