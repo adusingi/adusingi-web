@@ -3,7 +3,7 @@ type: Operating Guide
 title: Adding photos to the photography page
 description: Explains the preserved local manifest workflow and the automatic Files publication workflow.
 tags: [photography, photos, portfolio]
-timestamp: 2026-08-18T20:46:08+09:00
+timestamp: 2026-08-18T20:55:00+09:00
 ---
 
 # Adding photos to /photography
@@ -17,8 +17,8 @@ manual workflow remains supported and unchanged.
 Upload photos through the private PWA at <https://files.mobayilo.com>, add the
 `#portfolio` tag, and supply each photo's caption and place. Complete tagged
 entries appear before the local manifest without a repository edit or site
-deployment. If the Files feed is unavailable, this local manifest still
-renders normally.
+deployment. If the Files feed is unavailable or slow, this local manifest
+still renders normally.
 
 ## Manual publication
 

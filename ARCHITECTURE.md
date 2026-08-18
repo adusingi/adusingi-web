@@ -2,7 +2,7 @@
 type: Architecture
 title: Adusingi Portfolio — Architecture
 description: Structure, components, data stores, and deployment of the adusingi-web portfolio site.
-timestamp: 2026-08-18T20:46:08+09:00
+timestamp: 2026-08-18T20:55:00+09:00
 ---
 
 # Adusingi Portfolio — Architecture
@@ -224,7 +224,7 @@ graph TD
 | Rate Limit Store | In-memory `Map` (serverless warm instance) | Newsletter subscription rate limiting | `Map<string, { count, resetTime }>` — resets on cold start |
 | Newsletter Contacts | Resend (external) | Email list / audience management | Managed via Resend Contacts API |
 | Local Photo Manifest | `public/photos/photos.json` (hand-written) | Preserved existing gallery contents, newest first | `Photo[]`: `{ src, caption, place, alt? }` |
-| Files Photography Feed | `files.mobayilo.com` (external) | Complete new `#portfolio` publications, prepended at runtime | `{ photos: [{ src, thumbnailSrc, caption, place, alt, category, publishedAt }] }` |
+| Files Photography Feed | `files.mobayilo.com` (external) | Complete new `#portfolio` publications, prepended at runtime with a three-second fallback timeout | `{ success: true, data: { photos: [{ src, thumbnailSrc, caption, place, alt, category, publishedAt }] } }` |
 
 > **No persistent database** is used in this project. All data is either static files or managed by external services (Resend).
 

@@ -1,5 +1,8 @@
+import { z } from 'zod'
+
 const LOCAL_MANIFEST = '/photos/photos.json'
 const REMOTE_FEED = 'https://files.mobayilo.com/api/portfolio'
+const REMOTE_TIMEOUT_MS = 3000
 
 export interface Photo {
   src: string
@@ -11,49 +14,37 @@ export interface Photo {
 
 type Fetcher = (input: string, init?: RequestInit) => Promise<Response>
 
-function baseFields(value: unknown): value is Record<string, unknown> {
-  if (typeof value !== 'object' || value === null) return false
-  const photo = value as Record<string, unknown>
-  return (
-    typeof photo.src === 'string' &&
-    typeof photo.caption === 'string' &&
-    typeof photo.place === 'string' &&
-    (photo.alt === undefined || typeof photo.alt === 'string')
-  )
-}
-
-function trustedFilesUrl(value: unknown): value is string {
-  if (typeof value !== 'string') return false
-  try {
-    const url = new URL(value)
-    return url.protocol === 'https:' && url.hostname === 'files.mobayilo.com'
-  } catch {
-    return false
-  }
-}
+const BasePhotoSchema = z.object({
+  src: z.string(),
+  caption: z.string(),
+  place: z.string(),
+  alt: z.string().optional(),
+})
+const TrustedFilesUrlSchema = z.string().url().refine((value) => {
+  const url = new URL(value)
+  return url.protocol === 'https:' && url.hostname === 'files.mobayilo.com' && url.port === ''
+})
+const RemotePhotoSchema = BasePhotoSchema.extend({
+  src: TrustedFilesUrlSchema,
+  thumbnailSrc: TrustedFilesUrlSchema,
+})
+const RemoteEnvelopeSchema = z.object({
+  success: z.literal(true),
+  data: z.object({ photos: z.array(z.unknown()) }),
+})
 
 function localPhoto(value: unknown): Photo | null {
-  if (!baseFields(value)) return null
+  const parsed = BasePhotoSchema.safeParse(value)
+  if (!parsed.success) return null
   return {
-    src: value.src as string,
-    thumbnailSrc: value.src as string,
-    caption: value.caption as string,
-    place: value.place as string,
-    alt: value.alt as string | undefined,
+    ...parsed.data,
+    thumbnailSrc: parsed.data.src,
   }
 }
 
 function remotePhoto(value: unknown): Photo | null {
-  if (!baseFields(value)) return null
-  const photo = value as Record<string, unknown>
-  if (!trustedFilesUrl(photo.src) || !trustedFilesUrl(photo.thumbnailSrc)) return null
-  return {
-    src: photo.src,
-    thumbnailSrc: photo.thumbnailSrc,
-    caption: photo.caption as string,
-    place: photo.place as string,
-    alt: photo.alt as string | undefined,
-  }
+  const parsed = RemotePhotoSchema.safeParse(value)
+  return parsed.success ? parsed.data : null
 }
 
 async function loadLocalPhotos(fetcher: Fetcher): Promise<Photo[]> {
@@ -67,21 +58,37 @@ async function loadLocalPhotos(fetcher: Fetcher): Promise<Photo[]> {
   }
 }
 
-async function loadRemotePhotos(fetcher: Fetcher): Promise<Photo[]> {
+async function loadRemotePhotos(fetcher: Fetcher, signal: AbortSignal): Promise<Photo[]> {
   try {
-    const response = await fetcher(REMOTE_FEED, { cache: 'no-cache' })
+    const response = await fetcher(REMOTE_FEED, { cache: 'no-cache', signal })
     if (!response.ok) return []
     const value: unknown = await response.json()
-    if (typeof value !== 'object' || value === null) return []
-    const photos = (value as Record<string, unknown>).photos
-    return Array.isArray(photos) ? photos.map(remotePhoto).filter((photo): photo is Photo => photo !== null) : []
+    const envelope = RemoteEnvelopeSchema.safeParse(value)
+    if (!envelope.success) return []
+    return envelope.data.data.photos.map(remotePhoto).filter((photo): photo is Photo => photo !== null)
   } catch {
     return []
   }
 }
 
+async function loadRemoteWithinTimeout(fetcher: Fetcher): Promise<Photo[]> {
+  const controller = new AbortController()
+  let timeoutId: ReturnType<typeof setTimeout> | undefined
+  const timeout = new Promise<Photo[]>((resolve) => {
+    timeoutId = setTimeout(() => {
+      controller.abort()
+      resolve([])
+    }, REMOTE_TIMEOUT_MS)
+  })
+  try {
+    return await Promise.race([loadRemotePhotos(fetcher, controller.signal), timeout])
+  } finally {
+    if (timeoutId !== undefined) clearTimeout(timeoutId)
+  }
+}
+
 export async function loadPhotos(fetcher: Fetcher = fetch): Promise<Photo[]> {
-  const [remote, local] = await Promise.all([loadRemotePhotos(fetcher), loadLocalPhotos(fetcher)])
+  const [remote, local] = await Promise.all([loadRemoteWithinTimeout(fetcher), loadLocalPhotos(fetcher)])
   return [...remote, ...local]
 }
 
@@ -110,7 +117,8 @@ export function renderGrid(grid: HTMLElement, photos: Photo[]): void {
 
 function createLightbox(photos: Photo[]): { open: (index: number) => void } {
   const box = document.getElementById('lightbox')
-  const image = document.getElementById('lightbox-img') as HTMLImageElement | null
+  const imageElement = document.getElementById('lightbox-img')
+  const image = imageElement instanceof HTMLImageElement ? imageElement : null
   const caption = document.getElementById('lightbox-cap')
   const count = document.getElementById('lightbox-count')
   if (!box || !image || !caption || !count) return { open: () => undefined }

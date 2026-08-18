@@ -3,7 +3,7 @@ type: Project Guide
 title: Adusingi Portfolio
 description: Development and operating guide for the adusingi.com multi-page portfolio.
 tags: [portfolio, vite, typescript]
-timestamp: 2026-08-18T20:46:08+09:00
+timestamp: 2026-08-18T20:55:00+09:00
 ---
 
 # Adusingi Portfolio
@@ -102,8 +102,8 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 - Existing photos remain in `public/photos/photos.json`, newest first.
 - New photos tagged `#portfolio` in Files load from the public
   `files.mobayilo.com` photography feed before the local collection.
-- If the remote feed is unavailable or malformed, the complete local
-  collection still renders.
+- If the remote feed is unavailable, malformed, or does not respond within
+  three seconds, the complete local collection still renders.
 - Grid images use small derivatives while the lightbox uses larger,
   metadata-stripped display derivatives.
 
