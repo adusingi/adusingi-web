@@ -1,4 +1,4 @@
-// Production server for Dokploy (or any Docker host).
+// Optional self-host server for any Docker host. Production runs on Vercel; see docs/DEPLOYMENT.md.
 // Serves the static Vite build from dist/ with the same clean-URL rewrites
 // as vercel.json, and exposes the newsletter API at /api/subscribe.
 import express from 'express';
@@ -21,7 +21,7 @@ app.options('/api/subscribe', (req, res) => {
   void subscribeHandler(req as unknown as VercelRequest, res as unknown as VercelResponse);
 });
 
-// Health check for Dokploy
+// Health check for the container host
 app.get('/health', (_req, res) => {
   res.status(200).send('ok');
 });
