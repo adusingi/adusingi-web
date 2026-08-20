@@ -154,18 +154,22 @@ Markdown content here...
 
 ## Deployment
 
-Deployed on **Dokploy** as a Docker container (see [Dockerfile](Dockerfile) and [docs/DOKPLOY.md](docs/DOKPLOY.md)).
-[server/index.ts](server/index.ts) is an Express server that serves `dist/` with clean blog URL rewrites
-and hosts the newsletter API at `/api/subscribe` (port 3000, health check at `/health`).
-Requires `RESEND_API_KEY` (and optional `ALLOWED_ORIGIN`) env vars.
+Deployed on **Vercel** from GitHub (see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)).
+[vercel.json](vercel.json) holds the build settings and the clean URL rewrites.
+[api/subscribe.ts](api/subscribe.ts) is deployed automatically as a Vercel Serverless Function
+at `POST /api/subscribe`. It requires `RESEND_API_KEY` (and optional `ALLOWED_ORIGIN`) env vars,
+set in the Vercel project settings.
+
+Domain: `www.adusingi.com` (apex redirects to `www`). DNS and email are at OVH.
 
 ```bash
 pnpm build      # Build into dist/
-pnpm start      # Run production server locally on :3000
+pnpm preview    # Serve the built site
+pnpm dev:api    # `vercel dev` - site plus the serverless function
 ```
 
-Legacy Vercel config ([vercel.json](vercel.json), [api/subscribe.ts](api/subscribe.ts)) is kept;
-the API handler is reused by the Express server.
+The [Dockerfile](Dockerfile) and the Express server in [server/index.ts](server/index.ts) are an
+unused self-host path, kept as an option. Production does not use them - `/health` returns 404 live.
 
 Build process: `pnpm run build:posts && tsc && vite build`
 Output directory: `dist/`

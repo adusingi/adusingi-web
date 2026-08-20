@@ -114,24 +114,28 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 
 ## Deployment
 
-The site is deployed on **Dokploy** as a Docker container. [`server/index.ts`](server/index.ts) is an
-Express server that serves the built `dist/` with clean blog URL rewrites and hosts the newsletter API at
-`/api/subscribe` (port 3000, health check at `/health`). It requires a `RESEND_API_KEY` (and optional
-`ALLOWED_ORIGIN`) environment variable. See [docs/DOKPLOY.md](docs/DOKPLOY.md) for details.
+The site is deployed on **Vercel** from GitHub, at `www.adusingi.com` (the apex domain redirects to
+`www`). DNS and email are at OVH. [`vercel.json`](vercel.json) holds the build settings and the clean URL
+rewrites. [`api/subscribe.ts`](api/subscribe.ts) is deployed automatically as a Vercel Serverless Function
+at `POST /api/subscribe`; it requires a `RESEND_API_KEY` (and optional `ALLOWED_ORIGIN`) environment
+variable, set in the Vercel project settings. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for details.
 
 ```bash
 # Build into dist/
 pnpm build
 
-# Run the production server locally on :3000
-pnpm start
+# Serve the built site
+pnpm preview
+
+# Run the site plus the serverless function
+pnpm dev:api
 ```
 
 The build process generates blog posts, runs TypeScript type checking, then runs the Vite build,
 outputting to the `dist/` directory.
 
-> Legacy Vercel config ([vercel.json](vercel.json), [api/subscribe.ts](api/subscribe.ts)) is kept and the
-> API handler is reused by the Express server.
+> The [Dockerfile](Dockerfile) and the Express server in [`server/index.ts`](server/index.ts) are an unused
+> self-host path, kept as an option. Production does not use them.
 
 ## Features
 
