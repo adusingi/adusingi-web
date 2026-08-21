@@ -8,7 +8,7 @@ draft: false
 
 I am starting a series about getting something real on the internet.
 
-Building has never been as easy as it is right now, and most people have not noticed yet. Every post in this series takes one thing — a website first, then an app — and shows every step. Nothing skipped, nothing assumed.
+Building has never been as easy as it is right now, and most people have not noticed yet. Every post in this series takes one thing and shows every step. Nothing skipped, nothing assumed.
 
 This is the first one: **how to make a website for free with Cloudflare, using Codex or Claude Code.** No terminal. No credit card. Four things to copy and paste.
 
@@ -53,9 +53,7 @@ Free and public, in English, 日本語 and Français. No signup, no email.
 
 You can read the exact instructions your assistant will follow before you paste anything — plain text, including everything it is forbidden to do.
 
-## What's Next
-
-Next in the series: turning that site into an app — what actually changes, and the five pieces you add.
+## If You Get Stuck
 
 If you would rather not do it alone, there is a free 30-minute call on the guide page above. Bring the thing you want to build. If it turns out you do not need help, I will tell you that.
 
