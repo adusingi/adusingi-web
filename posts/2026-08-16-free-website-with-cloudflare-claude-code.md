@@ -57,6 +57,10 @@ You can read the exact instructions your assistant will follow before you paste 
 
 If you would rather not do it alone, there is a free 30-minute call on the guide page above. Bring the thing you want to build. If it turns out you do not need help, I will tell you that.
 
+## Part 2
+
+👉 [I Did Not Have a Business Idea. I Had the Same Photo on Two Websites.](/blog/i-did-not-have-a-business-idea)
+
 ---
 
 *Originally published on LinkedIn, and adapted for this blog.*
