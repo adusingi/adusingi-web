@@ -113,7 +113,7 @@ For the **contact page**:
 
 For the **blog**:
 1. Add markdown files to [posts/](posts/) directory (format: `YYYY-MM-DD-slug.md`)
-2. Run `pnpm run build:posts` to generate [src/data/posts.json](src/data/posts.json)
+2. Run `pnpm run build:posts` to generate the JSON under [public/data/](public/data/)
 3. Posts automatically appear on [blog.html](blog.html) and [post.html](post.html)
 
 ## Blog System
@@ -121,7 +121,8 @@ For the **blog**:
 ### Architecture
 - **Markdown posts** in `/posts` with YAML frontmatter
 - **Build-time generation**: [scripts/build-posts.ts](scripts/build-posts.ts) converts markdown to JSON
-- **Static output**: All posts in [src/data/posts.json](src/data/posts.json) (committed to git)
+- **Static output**: Per-post files in `public/data/posts/<slug>.json`, plus the paginated
+  lists `public/data/posts.json`, `posts-page-N.json` and `posts-all.json` (committed to git)
 - **Zero runtime deps**: Blog pages read from static JSON
 
 ### Post Format
