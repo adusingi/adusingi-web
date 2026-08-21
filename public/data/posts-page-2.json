@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "step-by-step-guide-to-becoming-a-software-developer",
+      "title": "Step-by-Step Guide to Becoming a Software Developer: Learn to Code and Get Hired!",
+      "date": "2023-01-15T00:00:00.000Z",
+      "description": "A comprehensive guide with free resources to learn coding, build your portfolio, and land your first software development job.",
+      "tags": [
+        "career",
+        "coding",
+        "resources",
+        "education"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "become-a-web3-developer-with-ethereum-blockchain",
       "title": "Become a Web3 Developer with Ethereum Blockchain: A Guide to Learning and Getting Hired!",
       "date": "2022-06-15T00:00:00.000Z",

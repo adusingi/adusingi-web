@@ -1,5 +1,19 @@
 [
   {
+    "slug": "i-did-not-have-a-business-idea",
+    "title": "I Did Not Have a Business Idea. I Had the Same Photo on Two Websites.",
+    "date": "2026-08-21T00:00:00.000Z",
+    "description": "Part 2 of the series on getting something real onto the internet: how one small annoyance — uploading the same photo twice — became two tools, and why you do not need a big idea to start.",
+    "tags": [
+      "ai",
+      "web-development",
+      "cloudflare",
+      "photography",
+      "series"
+    ],
+    "pinned": false
+  },
+  {
     "slug": "free-website-with-cloudflare-claude-code",
     "title": "How to Make a Website for Free with Cloudflare (No Terminal, No Credit Card)",
     "date": "2026-08-16T00:00:00.000Z",
