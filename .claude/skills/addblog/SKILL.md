@@ -91,10 +91,22 @@ Read the generated `public/data/posts/<slug>.json` and confirm the headings and 
 
 Commit on a `content/<slug>` branch cut from `development`. Then hand over the preview URL and ask for approval — CLAUDE.md requires explicit consent before any deploy.
 
-On approval: merge into `development`, merge `development` into `main`, push both. Vercel builds from `main` and takes under a minute. Confirm it landed:
+On approval: merge into `development`, merge `development` into `main`, push both. Vercel builds from `main` and takes under a minute.
+
+Confirming it landed needs the data, not the page. `/blog/<slug>` is a single-page app
+shell that answers **200 for any slug**, including one that does not exist, so a status
+code proves nothing. Poll the post list until the new slug is first:
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" https://www.adusingi.com/blog/<slug>
+curl -s "https://www.adusingi.com/data/posts.json?cb=$RANDOM" |
+  python3 -c "import sys,json; d=json.load(sys.stdin); p=d['posts'] if isinstance(d,dict) else d; print(p[0]['slug'])"
+```
+
+The cache-buster matters — without it the CDN can serve the pre-deploy list for minutes.
+Then read the post's own JSON and confirm the title, date, tags and every `href`:
+
+```bash
+curl -s "https://www.adusingi.com/data/posts/<slug>.json"
 ```
 
 Then ask whether to delete the branch.
