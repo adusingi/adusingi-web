@@ -72,6 +72,10 @@ Book a free 30-minute call. Bring the thing that annoys you every day.
 
 👉 [Book a Discovery Call](https://tidycal.com/aimabled/1-on-1-ai-build-strategy-session-google-meet-10wrq0g) — 30 min, free, on Google Meet
 
+## Part 3
+
+👉 [I Forgot a Meeting. I Only Found Out Because the Other Person Cancelled It.](/blog/i-forgot-a-meeting)
+
 ---
 
 *Originally published on LinkedIn, and adapted for this blog.*

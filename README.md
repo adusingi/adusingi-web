@@ -93,7 +93,7 @@ This is a **multi-page vanilla HTML/JavaScript** site (no frameworks):
 ### Blog System
 - **Markdown posts** in `/posts` directory with YAML frontmatter
 - **Build-time generation** - markdown converted to JSON at build time
-- **Static output** - all blog data in `src/data/posts.json`
+- **Static output** - all blog data under `public/data/`
 - **Tag filtering** - client-side filtering on blog index
 - **SEO-friendly URLs** - Vercel rewrites for clean URLs (`/blog/post-slug`)
 
