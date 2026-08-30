@@ -8,11 +8,30 @@ description: Adapt a published LinkedIn post into a post on the adusingi.com blo
 Input: a LinkedIn post URL, sometimes with the post text pasted beside it.
 Output: the post live on `www.adusingi.com/blog`, after the owner approves the deploy.
 
+## 0. Work in the site repo
+
+This skill is reachable from any directory, but every command below runs in the
+`adusingi-web` repo and nowhere else:
+
+```bash
+cd ~/Documents/Code/p/adusingi-web
+```
+
+The post being adapted usually lives in another repo — a LinkedIn draft in
+`mobayilo-business/marketing/posts/` is the common case. Read it there, then come back
+here to write. Never write blog files into the repo you were called from.
+
 ## 1. Get the text
 
 WebFetch the URL. LinkedIn serves an auth wall to non-browsers, so the fetch comes back with navigation chrome and no post body.
 
-When the text is pasted in the request, use that. Otherwise ask for it and wait — a LinkedIn post cannot be reconstructed from its URL slug.
+When the text is pasted in the request, use that. When the post was drafted in
+`mobayilo-business/marketing/posts/`, that file holds the published text verbatim — read
+it from there. Otherwise ask for it and wait: a LinkedIn post cannot be reconstructed
+from its URL slug.
+
+Adapt only what is already **published**. A draft has no URL, no date, and no resolved
+links, so there is nothing to adapt yet.
 
 ## 2. Read the newest post first
 
