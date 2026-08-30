@@ -1,5 +1,19 @@
 [
   {
+    "slug": "i-forgot-a-meeting",
+    "title": "I Forgot a Meeting. I Only Found Out Because the Other Person Cancelled It.",
+    "date": "2026-08-30T00:00:00.000Z",
+    "description": "Part 3 of the series on getting something real onto the internet: too many parallel lives, a meeting I never knew I had missed, and the one page I built to answer what I must not miss today.",
+    "tags": [
+      "ai",
+      "productivity",
+      "saas",
+      "build-in-public",
+      "series"
+    ],
+    "pinned": false
+  },
+  {
     "slug": "i-did-not-have-a-business-idea",
     "title": "I Did Not Have a Business Idea. I Had the Same Photo on Two Websites.",
     "date": "2026-08-21T00:00:00.000Z",

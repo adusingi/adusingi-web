@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "web3-fundamentals-from-zero-to-one",
+      "title": "Web 3.0 Fundamentals | From 0 to 1",
+      "date": "2023-02-13T00:00:00.000Z",
+      "description": "A comprehensive weekly newsletter series covering Web3 fundamentals including wallets, DeFi, NFTs, bridges, stablecoins, and more.",
+      "tags": [
+        "blockchain",
+        "web3",
+        "defi",
+        "ethereum",
+        "education"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "step-by-step-guide-to-becoming-a-software-developer",
       "title": "Step-by-Step Guide to Becoming a Software Developer: Learn to Code and Get Hired!",
       "date": "2023-01-15T00:00:00.000Z",
