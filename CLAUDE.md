@@ -106,6 +106,20 @@ For the **main page**:
 2. Update [index.tsx](index.tsx) for interactivity
 3. Update [style.css](style.css) for custom styles
 
+### Selected Work — the project list
+
+The "01 — Selected Work" list in [index.html](index.html) is hand-written markup, one
+`<a>` block per project: live URL, name, a lowercase `a · b` category tag, and one
+sentence of description.
+
+**Mobayilo is pinned first, and every new project goes directly below it** — not above
+it, and not appended to the end of the list. Owner rule, 2026-08-31; the markup carries
+the same note at the insertion point. Do not reorder Mobayilo.
+
+**Never list a project whose URL does not work.** Check it before adding the block, and
+prefer the host the site itself declares canonical (`og:url`) — that is why Doko Maps is
+listed as `www.dokomaps.com`.
+
 For the **contact page**:
 1. Update [contact.html](contact.html) for structure/content
 2. Update [contact.tsx](contact.tsx) for interactivity
