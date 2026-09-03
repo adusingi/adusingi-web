@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "working-with-ai-is-not-improvisation",
+      "title": "Working With AI Is Not Improvisation",
+      "date": "2026-09-03T00:00:00.000Z",
+      "description": "The model gave me Next.js for a product that is almost all backend. One question changed the answer — and its first line is the whole lesson.",
+      "tags": [
+        "ai",
+        "software-architecture",
+        "ruby-on-rails",
+        "build-with-ai"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "i-forgot-a-meeting",
       "title": "I Forgot a Meeting. I Only Found Out Because the Other Person Cancelled It.",
       "date": "2026-08-30T00:00:00.000Z",
@@ -118,19 +131,6 @@
         "meta",
         "blogging",
         "japan"
-      ],
-      "pinned": false
-    },
-    {
-      "slug": "your-complete-guide-to-master-devops",
-      "title": "Your Complete Guide to Master DevOps",
-      "date": "2023-03-10T00:00:00.000Z",
-      "description": "A curated collection of YouTube tutorials covering DevOps fundamentals to advanced topics like Docker, Terraform, Kubernetes, and Ansible.",
-      "tags": [
-        "devops",
-        "tutorials",
-        "career",
-        "resources"
       ],
       "pinned": false
     }

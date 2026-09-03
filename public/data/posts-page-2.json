@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "your-complete-guide-to-master-devops",
+      "title": "Your Complete Guide to Master DevOps",
+      "date": "2023-03-10T00:00:00.000Z",
+      "description": "A curated collection of YouTube tutorials covering DevOps fundamentals to advanced topics like Docker, Terraform, Kubernetes, and Ansible.",
+      "tags": [
+        "devops",
+        "tutorials",
+        "career",
+        "resources"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "web3-fundamentals-from-zero-to-one",
       "title": "Web 3.0 Fundamentals | From 0 to 1",
       "date": "2023-02-13T00:00:00.000Z",
