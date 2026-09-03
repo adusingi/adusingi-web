@@ -1,0 +1,14 @@
+{
+  "slug": "working-with-ai-is-not-improvisation",
+  "title": "Working With AI Is Not Improvisation",
+  "date": "2026-09-03T00:00:00.000Z",
+  "description": "The model gave me Next.js for a product that is almost all backend. One question changed the answer — and its first line is the whole lesson.",
+  "tags": [
+    "ai",
+    "software-architecture",
+    "ruby-on-rails",
+    "build-with-ai"
+  ],
+  "pinned": false,
+  "content": "<p>Working with AI is not improvisation.</p>\n<p>AI is a very powerful tool — if you know how to work with it, and if you challenge it.</p>\n<h2>The Default</h2>\n<p>I asked for an architecture for a small SaaS. The model gave me Next.js. Good framework. Wrong answer here.</p>\n<p>The product is almost all backend: inbound email, background jobs, LLM calls, reminders, outbound email, and a simple dashboard. Ruby on Rails does all of that in one language, one process, one container.</p>\n<h2>The Question</h2>\n<p>So I asked one question:</p>\n<p><strong>\"Why not Ruby on Rails?\"</strong></p>\n<p>The first line of the answer is the whole lesson:</p>\n<blockquote>\n<p>\"You are right to ask. I defaulted to TypeScript from habit.\"</p>\n</blockquote>\n<h2>The Real Skill</h2>\n<p>The model did not fail. It gave me the most common pattern in its training data. That is what a default is.</p>\n<p>Your job is not to accept the default. Your job is to know enough to ask the second question.</p>\n<p>That is the real skill. Not prompting. Judgement.</p>\n<h2>What Stays Yours</h2>\n<p>You do not write the code. But the architecture, the repository and the decision stay yours.</p>\n<p>That is what I teach. Thirty minutes, free, on your own project.</p>\n<p>👉 <a href=\"https://tidycal.com/aimabled/1-on-1-ai-build-strategy-session-google-meet-10wrq0g\">Book a Discovery Call</a> — 30 min, free, on Google Meet</p>\n<hr />\n<p><em>Originally published on LinkedIn, and adapted for this blog.</em></p>\n"
+}
