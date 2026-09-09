@@ -6,7 +6,7 @@ tags: ["ai", "aws", "learn-in-public", "build-with-ai"]
 draft: false
 ---
 
-"AI will stop you learning."
+"AI will stop you from learning."
 
 I have learned more about software since AI than in all the years before it.
 
@@ -46,7 +46,7 @@ A backup you have never restored is not a backup. It is a hope.
 
 That is the distance between knowing the word and doing the work. I crossed a lot of that distance this week.
 
-## So, Does AI Stop You Learning?
+## So, Does AI Stop You From Learning?
 
 The AI had no access to my server. It could not do the work for me.
 
