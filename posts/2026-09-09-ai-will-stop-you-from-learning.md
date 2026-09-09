@@ -1,12 +1,10 @@
 ---
-title: "AI Did Not Stop Me Learning"
+title: "AI Will Stop You From Learning"
 date: 2026-09-09
 description: "A missed email multiplied our AWS bill by four. Fixing it became the deepest learning week of my year — and the AI never touched the server."
 tags: ["ai", "aws", "learn-in-public", "build-with-ai"]
 draft: false
 ---
-
-"AI will stop you from learning."
 
 I have learned more about software since AI than in all the years before it.
 
