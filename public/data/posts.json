@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "ai-did-not-stop-me-learning",
+      "title": "AI Did Not Stop Me Learning",
+      "date": "2026-09-09T00:00:00.000Z",
+      "description": "A missed email multiplied our AWS bill by four. Fixing it became the deepest learning week of my year — and the AI never touched the server.",
+      "tags": [
+        "ai",
+        "aws",
+        "learn-in-public",
+        "build-with-ai"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "working-with-ai-is-not-improvisation",
       "title": "Working With AI Is Not Improvisation",
       "date": "2026-09-03T00:00:00.000Z",
@@ -119,18 +132,6 @@
         "typescript",
         "blogging",
         "web-dev"
-      ],
-      "pinned": false
-    },
-    {
-      "slug": "welcome-to-my-blog",
-      "title": "Welcome to My Blog",
-      "date": "2024-12-01T00:00:00.000Z",
-      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
-      "tags": [
-        "meta",
-        "blogging",
-        "japan"
       ],
       "pinned": false
     }

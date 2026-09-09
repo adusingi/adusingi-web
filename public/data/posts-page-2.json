@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "welcome-to-my-blog",
+      "title": "Welcome to My Blog",
+      "date": "2024-12-01T00:00:00.000Z",
+      "description": "Introducing my new blog where I'll share thoughts on tech, Japan, and building digital products from rural Okayama.",
+      "tags": [
+        "meta",
+        "blogging",
+        "japan"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "your-complete-guide-to-master-devops",
       "title": "Your Complete Guide to Master DevOps",
       "date": "2023-03-10T00:00:00.000Z",
