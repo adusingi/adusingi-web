@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "what-time-is-it-where-you-are",
+      "title": "What Time Is It Where You Are?",
+      "date": "2026-09-18T00:00:00.000Z",
+      "description": "A clock app built in half an afternoon taught me the rule the serious version needed three months later, when eight people in four countries had to book time with me.",
+      "tags": [
+        "ai",
+        "build-in-public",
+        "build-with-ai",
+        "series"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "ai-will-stop-you-from-learning",
       "title": "AI Will Stop You From Learning",
       "date": "2026-09-09T00:00:00.000Z",
@@ -119,19 +132,6 @@
         "japan",
         "remote-work",
         "lifestyle"
-      ],
-      "pinned": false
-    },
-    {
-      "slug": "building-minimal-blog-vite",
-      "title": "Building a Minimal Blog with Vite and TypeScript",
-      "date": "2024-12-10T00:00:00.000Z",
-      "description": "How I built a zero-maintenance blog system using markdown, static generation, and vanilla JavaScript—no frameworks required.",
-      "tags": [
-        "vite",
-        "typescript",
-        "blogging",
-        "web-dev"
       ],
       "pinned": false
     }
