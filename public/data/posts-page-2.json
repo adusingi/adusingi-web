@@ -1,6 +1,19 @@
 {
   "posts": [
     {
+      "slug": "building-minimal-blog-vite",
+      "title": "Building a Minimal Blog with Vite and TypeScript",
+      "date": "2024-12-10T00:00:00.000Z",
+      "description": "How I built a zero-maintenance blog system using markdown, static generation, and vanilla JavaScript—no frameworks required.",
+      "tags": [
+        "vite",
+        "typescript",
+        "blogging",
+        "web-dev"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "welcome-to-my-blog",
       "title": "Welcome to My Blog",
       "date": "2024-12-01T00:00:00.000Z",
