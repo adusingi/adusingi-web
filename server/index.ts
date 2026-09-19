@@ -3,6 +3,7 @@
 // as vercel.json, and exposes the newsletter API at /api/subscribe.
 import express from 'express';
 import { resolve } from 'path';
+import { existsSync } from 'fs';
 import subscribeHandler from '../api/subscribe';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
@@ -31,7 +32,15 @@ app.get('/contact', (_req, res) => res.sendFile(resolve(distDir, 'contact.html')
 app.get('/ai-1on1', (_req, res) => res.sendFile(resolve(distDir, 'ai-1on1.html')));
 app.get('/photography', (_req, res) => res.sendFile(resolve(distDir, 'photography.html')));
 app.get('/blog', (_req, res) => res.sendFile(resolve(distDir, 'blog.html')));
-app.get('/blog/:slug', (_req, res) => res.sendFile(resolve(distDir, 'post.html')));
+// Prefer the page build-seo.ts generated for this post — it carries the post's
+// own title, description and canonical URL. Vercel resolves this the same way:
+// a real file at /blog/<slug> wins over the rewrite in vercel.json.
+app.get('/blog/:slug', (req, res) => {
+  const slug = req.params.slug;
+  const generated = resolve(distDir, 'blog', slug, 'index.html');
+  const safe = /^[a-z0-9-]+$/i.test(slug) && existsSync(generated);
+  res.sendFile(safe ? generated : resolve(distDir, 'post.html'));
+});
 
 // Static assets
 app.use(express.static(distDir, { extensions: ['html'] }));

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:api": "vercel dev",
-    "build": "pnpm run build:posts && tsc && vite build",
+    "build": "pnpm run build:posts && tsc && vite build && pnpm run build:seo",
     "build:posts": "npx tsx scripts/build-posts.ts",
     "preview": "vite preview",
     "start": "tsx server/index.ts",
@@ -18,7 +18,8 @@
     "newsletter:send": "tsx newsletter/send-post.ts",
     "newsletter:test": "./scripts/send-test-email.sh",
     "newsletter:send-z": "node scripts-js/send-newsletter.js",
-    "newsletter:latest": "node scripts-js/send-newsletter.js life-in-rural-japan"
+    "newsletter:latest": "node scripts-js/send-newsletter.js life-in-rural-japan",
+    "build:seo": "npx tsx scripts/build-seo.ts"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.5",

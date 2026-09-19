@@ -1,12 +1,13 @@
 ---
 name: addblog
-description: Adapt a published LinkedIn post into a post on the adusingi.com blog. Use when given a LinkedIn post URL to put on the blog, or asked to republish a LinkedIn post here.
+description: Adapt a published LinkedIn post into a post on the adusingi.com blog, then draft the tweet that points at it. Use when given a LinkedIn post URL to put on the blog, or asked to republish a LinkedIn post here.
 ---
 
 # Add a LinkedIn post to the blog
 
 Input: a LinkedIn post URL, sometimes with the post text pasted beside it.
-Output: the post live on `www.adusingi.com/blog`, after the owner approves the deploy.
+Output: the post live on `www.adusingi.com/blog` after the owner approves the deploy,
+and a tweet drafted for him to copy into `x.com/adusingi`.
 
 ## 0. Work in the site repo
 
@@ -82,8 +83,17 @@ Leave future posts unnamed. Each post follows what is worth writing at the time,
 ```bash
 pnpm build:posts     # writes public/data/ — the only place the site reads from
 pnpm test:run
-pnpm preview --port 4321
+pnpm build           # preview serves dist/, so build before previewing
+pnpm start           # express, port 3000 — it routes /blog/:slug like production
 ```
+
+**Hand over `http://localhost:3000/blog/<slug>`, and use `pnpm start` to serve it.**
+`pnpm preview` is vite serving `dist/` with no rewrite rules, so under it
+`/blog/<slug>` quietly falls back to the home page and only
+`/post.html?slug=<slug>` shows the post. The production routes live in
+`vercel.json` (`/blog/:slug` → `/post.html`), and `server/index.ts` is the one
+local server that reproduces them. Sending the owner a `post.html?slug=` link
+makes him check a URL the site will never use.
 
 Read the generated `public/data/posts/<slug>.json` and confirm the headings and every `href` came out right, and that the post sits first in `public/data/posts.json`.
 
@@ -109,4 +119,48 @@ Then read the post's own JSON and confirm the title, date, tags and every `href`
 curl -s "https://www.adusingi.com/data/posts/<slug>.json"
 ```
 
-Then ask whether to delete the branch.
+## 8. Draft the tweet
+
+Only now, because the tweet carries a URL and step 7 is what proves that URL resolves to
+the post. Write one tweet for `x.com/adusingi`, print it in the terminal as a copy-paste
+block, and stop. **Never post it** — there is no X integration here, and the owner posts
+it himself.
+
+A tweet is a different shape, not a shorter LinkedIn post. Do not truncate the article.
+Take the single sharpest concrete thing in it — a number, a contradiction, a quoted line
+— and let the link card carry everything else.
+
+- **One tweet, not a thread**, unless the owner asks for a thread.
+- **Budget about 255 characters of text.** X counts every link as 23 characters whatever
+  its length, so 280 − 23 − a newline leaves roughly 255. Print the count beside the
+  draft. If the account has Premium the cap is far higher, but a tweet that fits 280
+  travels further — keep the budget anyway.
+- **The link goes last, on its own line**, as the canonical
+  `https://www.adusingi.com/blog/<slug>`, using the slug verified in step 7 and not the
+  one you expected to build.
+- **Do not repeat the title.** X renders a preview card carrying the title and
+  description already, so a tweet that restates them wastes its only screen.
+- **At most one hashtag, and only for a real community.** A pile of them reads as spam on
+  X, unlike LinkedIn where the post's four are normal.
+- **Keep the author's sentences.** Same rule as the blog: adapt the structure, never the
+  voice.
+
+Print it in this shape:
+
+```
+─── tweet for x.com/adusingi ───
+<the text>
+
+https://www.adusingi.com/blog/<slug>
+─── 231 characters ───
+```
+
+The count is your arithmetic, so treat it as approximate: X's composer shows the true
+one, and it is the number that decides. Say so when you hand the draft over.
+
+For a thread, make each tweet a complete thought, put the link in the last one only, and
+do not number them — X already shows them as a chain.
+
+## 9. Clean up
+
+Ask whether to delete the branch.
