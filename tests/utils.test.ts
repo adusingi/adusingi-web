@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { formatDate, isValidEmail, getSlugFromUrl } from '../src/lib/utils';
+import { formatDate, isValidEmail, getSlugFromUrl, postHref } from '../src/lib/utils';
 
 describe('Utils', () => {
     describe('formatDate', () => {
@@ -93,6 +93,27 @@ describe('Utils', () => {
             
             const result = getSlugFromUrl();
             expect(result).toBeNull();
+        });
+    });
+
+    describe('postHref', () => {
+        it('builds the URL the site advertises, not the page that serves it', () => {
+            expect(postHref('what-time-is-it-where-you-are')).toBe('/blog/what-time-is-it-where-you-are');
+        });
+
+        it('never links post.html directly', () => {
+            // The blog list linked /post.html?slug=... from December 2025 to
+            // September 2026. It rendered correctly, so nothing failed — every
+            // reader just arrived on a URL og:url and the newsletter disagree with.
+            expect(postHref('any-slug')).not.toContain('post.html');
+        });
+
+        it('round-trips: what postHref writes, getSlugFromUrl reads back', () => {
+            const slug = 'i-forgot-a-meeting';
+            window.location.search = '';
+            window.location.pathname = postHref(slug);
+
+            expect(getSlugFromUrl()).toBe(slug);
         });
     });
 });

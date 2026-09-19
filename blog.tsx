@@ -8,7 +8,7 @@ import '@fontsource/noto-serif-jp/400.css';
 
 // Import newsletter form
 import { initNewsletterForm } from './src/components/newsletter-form.js';
-import { formatDate } from './src/lib/utils';
+import { formatDate, postHref } from './src/lib/utils';
 
 // --- Global State ---
 interface Post {
@@ -124,7 +124,7 @@ function renderPosts(posts: Post[]) {
 
   postsContainer.innerHTML = sanitizedPosts.map(post => `
     <article class="border-b border-ink/15">
-      <a href="/post.html?slug=${encodeURIComponent(post.slug)}" class="group block py-6 hover:bg-ink/[0.03] transition-colors -mx-3 px-3">
+      <a href="${postHref(post.slug)}" class="group block py-6 hover:bg-ink/[0.03] transition-colors -mx-3 px-3">
         <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
           <time class="text-xs text-ink/50">${formatDate(post.date)}</time>
           ${post.pinned ? '<span class="text-xs font-bold text-accent">pinned</span>' : ''}
