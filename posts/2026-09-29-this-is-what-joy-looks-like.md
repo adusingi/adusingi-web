@@ -1,5 +1,5 @@
 ---
-title: "This Is What Joy Looked Like"
+title: "This Is What Joy Looks Like"
 date: 2026-09-29
 description: "In almost three weeks, 3.26 billion tokens and 287 commits became four useful things — but usefulness was only half the story. The other half was pleasure."
 tags: ["build-in-public", "ai", "learn-in-public", "series"]
