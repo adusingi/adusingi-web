@@ -1,6 +1,32 @@
 {
   "posts": [
     {
+      "slug": "this-is-what-joy-looked-like",
+      "title": "This Is What Joy Looked Like",
+      "date": "2026-09-29T00:00:00.000Z",
+      "description": "In almost three weeks, 3.26 billion tokens and 287 commits became four useful things — but usefulness was only half the story. The other half was pleasure.",
+      "tags": [
+        "build-in-public",
+        "ai",
+        "learn-in-public",
+        "series"
+      ],
+      "pinned": false
+    },
+    {
+      "slug": "more-than-i-needed",
+      "title": "More Than I Needed",
+      "date": "2026-09-22T00:00:00.000Z",
+      "description": "Basecamp's open-source monitoring tool was the first software I ran in production without building it myself — and it was more than my apps needed, so I built the small version in Go.",
+      "tags": [
+        "build-in-public",
+        "golang",
+        "open-source",
+        "series"
+      ],
+      "pinned": false
+    },
+    {
       "slug": "what-time-is-it-where-you-are",
       "title": "What Time Is It Where You Are?",
       "date": "2026-09-18T00:00:00.000Z",
@@ -106,32 +132,6 @@
         "machine-learning",
         "career",
         "andrej-karpathy"
-      ],
-      "pinned": false
-    },
-    {
-      "slug": "one-prompt-one-website",
-      "title": "One Prompt. One Hour. One Website.",
-      "date": "2025-12-20T00:00:00.000Z",
-      "description": "How I built my entire portfolio website in under an hour using AI - and why this changes everything for non-technical founders.",
-      "tags": [
-        "ai",
-        "web-development",
-        "no-code",
-        "career",
-        "antigravity"
-      ],
-      "pinned": false
-    },
-    {
-      "slug": "life-in-rural-japan",
-      "title": "Code, Craft & Culture: Building from Rural Japan",
-      "date": "2024-12-15T00:00:00.000Z",
-      "description": "What it's like developing software and building digital products from Okayama, Japan—away from the tech hubs.",
-      "tags": [
-        "japan",
-        "remote-work",
-        "lifestyle"
       ],
       "pinned": false
     }

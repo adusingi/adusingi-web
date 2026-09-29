@@ -1,5 +1,31 @@
 [
   {
+    "slug": "this-is-what-joy-looked-like",
+    "title": "This Is What Joy Looked Like",
+    "date": "2026-09-29T00:00:00.000Z",
+    "description": "In almost three weeks, 3.26 billion tokens and 287 commits became four useful things — but usefulness was only half the story. The other half was pleasure.",
+    "tags": [
+      "build-in-public",
+      "ai",
+      "learn-in-public",
+      "series"
+    ],
+    "pinned": false
+  },
+  {
+    "slug": "more-than-i-needed",
+    "title": "More Than I Needed",
+    "date": "2026-09-22T00:00:00.000Z",
+    "description": "Basecamp's open-source monitoring tool was the first software I ran in production without building it myself — and it was more than my apps needed, so I built the small version in Go.",
+    "tags": [
+      "build-in-public",
+      "golang",
+      "open-source",
+      "series"
+    ],
+    "pinned": false
+  },
+  {
     "slug": "what-time-is-it-where-you-are",
     "title": "What Time Is It Where You Are?",
     "date": "2026-09-18T00:00:00.000Z",
